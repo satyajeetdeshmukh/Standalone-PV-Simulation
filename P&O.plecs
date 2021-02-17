@@ -1,5 +1,5 @@
 Plecs {
-  Name          "BP365_65W_Boost"
+  Name          "P&O"
   Version       "4.5"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -47,7 +47,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 35; 1920, 990]
+    Location      [0, 26; 1920, 981]
     ZoomFactor    1.18627
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -507,13 +507,13 @@ Plecs {
       }
       Parameter {
         Variable      "v_init"
-        Value         "17.6"
+        Value         "10"
         Show          on
       }
     }
     Component {
       Type          Voltmeter
-      Name          "Vm1"
+      Name          "V_PV"
       Show          on
       Position      [435, 75]
       Direction     up
@@ -521,7 +521,7 @@ Plecs {
     }
     Component {
       Type          Ammeter
-      Name          "Am1"
+      Name          "I_PV"
       Show          on
       Position      [250, 125]
       Direction     right
@@ -536,7 +536,7 @@ Plecs {
       Flipped       off
       Parameter {
         Variable      "L"
-        Value         "5e-03"
+        Value         "0.5e-03"
         Show          on
       }
       Parameter {
@@ -547,7 +547,7 @@ Plecs {
     }
     Component {
       Type          Mosfet
-      Name          "FET2"
+      Name          "M0"
       Show          on
       Position      [695, 80]
       Direction     up
@@ -582,12 +582,12 @@ Plecs {
       Flipped       off
       Parameter {
         Variable      "Vf"
-        Value         "0"
+        Value         "0.7"
         Show          off
       }
       Parameter {
         Variable      "Ron"
-        Value         "0"
+        Value         "0.01"
         Show          off
       }
       Parameter {
@@ -611,7 +611,7 @@ Plecs {
       Parameter {
         Variable      "C"
         Value         "100e-6"
-        Show          off
+        Show          on
       }
       Parameter {
         Variable      "v_init"
@@ -623,23 +623,23 @@ Plecs {
       Type          Scope
       Name          "Scope5"
       Show          on
-      Position      [125, 200]
+      Position      [145, 20]
       Direction     up
       Flipped       off
       Location      [489, 362; 843, 593]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAAWIAAADMAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAAAbsAAAECAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAACAAAAGQAAAAJAAAAZAAAAAEAAABkAAAAAgAAAGQAAAADAA"
-"AAZAAAAAQAAABkAAAAewAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAABXAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"AAAAGQAAAAJAAAAZAAAAAYAAABkAAAABwAAAGQAAAAEAAAAZAAAAAUAAABkAAAAAgAAAGQAAAADAA"
+"AAZAAAAAEAAABkAAAAggAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAABXAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAkAAAAAQAAAAAAAAPoAAAAACQ="
+"AArAAAAAQAAAAAAAAPoAAAAACs="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0.0"
@@ -681,12 +681,12 @@ Plecs {
     }
     Component {
       Type          Subsystem
-      Name          "MPPT \nController"
+      Name          "M0 \nController"
       Show          on
-      Position      [270, 250]
+      Position      [175, 255]
       Direction     up
       Flipped       off
-      Frame         [-30, -80; 30, 80]
+      Frame         [-135, -20; 135, 20]
       LabelPosition [0, 0]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
@@ -697,18 +697,23 @@ Plecs {
       MaskIconRotates on
       Terminal {
         Type          Input
-        Position      [-20, -80]
+        Position      [-85, -20]
         Direction     up
       }
       Terminal {
         Type          Input
-        Position      [-10, -80]
+        Position      [-75, -20]
         Direction     up
       }
       Terminal {
         Type          Output
-        Position      [10, -84]
-        Direction     up
+        Position      [139, -10]
+        Direction     right
+      }
+      Terminal {
+        Type          Input
+        Position      [-135, -10]
+        Direction     left
       }
       Schematic {
         Location      [769, 300; 1392, 617]
@@ -759,12 +764,12 @@ Plecs {
         }
         Component {
           Type          Subsystem
-          Name          "MPP\ncontroller"
+          Name          "controller"
           Show          on
-          Position      [220, 125]
+          Position      [235, 125]
           Direction     up
           Flipped       off
-          Frame         [-20, -20; 20, 20]
+          Frame         [-35, -20; 35, 20]
           LabelPosition [0, 23]
           LabelAlign    up
           SampleTime    "-1"
@@ -775,35 +780,35 @@ Plecs {
           MaskIconRotates on
           Terminal {
             Type          Output
-            Position      [24, 0]
+            Position      [39, 0]
             Direction     right
           }
           Terminal {
             Type          Input
-            Position      [-20, 0]
+            Position      [-35, 0]
             Direction     left
           }
           Schematic {
-            Location      [294, 458; 793, 609]
+            Location      [294, 458; 793, 639]
             ZoomFactor    1
             SliderPosition [0, 0]
             ShowBrowser   off
             BrowserWidth  100
             Component {
               Type          CScript
-              Name          "dP/dV calc"
+              Name          "code"
               Show          on
               Position      [155, 40]
               Direction     up
               Flipped       off
               Parameter {
                 Variable      "DialogGeometry"
-                Value         "[724 259 422 314]"
+                Value         "[329 149 1251 793]"
                 Show          off
               }
               Parameter {
                 Variable      "NumInputs"
-                Value         "2"
+                Value         "3"
                 Show          off
               }
               Parameter {
@@ -818,7 +823,7 @@ Plecs {
               }
               Parameter {
                 Variable      "NumDiscStates"
-                Value         "3"
+                Value         "5"
                 Show          off
               }
               Parameter {
@@ -833,7 +838,7 @@ Plecs {
               }
               Parameter {
                 Variable      "Ts"
-                Value         "1/10000"
+                Value         "1/20000"
                 Show          off
               }
               Parameter {
@@ -860,55 +865,104 @@ Plecs {
                 Variable      "Declarations"
                 Value         "#define V Input(0)\n"
 "#define I Input(1)\n"
+"#define I_bat Input(2)\n"
 "#define P_old DiscState(0)\n"
 "#define Dref DiscState(1)\n"
 "#define inc DiscState(2)\n"
+"#define MPPT_Mode DiscState(3)\n"
+"#define ki_term DiscState(4)\n"
 "#define D_MAX 0.8\n"
-"#define D_MIN 0.1\n"
-"#define DeltaD 0.0001\n"
+"#define D_MIN 0.05\n"
+"#define DeltaD_Max 0.01\n"
+"#define I_bat_MAX -2\n"
+"#define P_Load 200\n"
+"#define kp 0.001\n"
+"#define ki 0.001\n"
 "\n"
 "//Global variable\n"
-"static double P;"
+"static double P;\n"
+"static double DeltaD;\n"
+"static double kp_term;\n"
                 Show          off
               }
               Parameter {
                 Variable      "StartFcn"
                 Value         "P_old = 0;\n"
 "Dref = 0.5;\n"
-"inc=-1;"
+"inc=-1;\n"
+"MPPT_Mode = 1;\n"
+"ki_term = 0;\n"
                 Show          off
               }
               Parameter {
                 Variable      "OutputFcn"
-                Value         "\n"
+                Value         "P = V*I;\n"
 "\n"
-"P = V*I;\n"
+"if(I_bat < 1.2*I_bat_MAX && P > P_Load){\n"
+"\tMPPT_Mode = 0;\n"
+"\tinc = 1;\n"
+"}\n"
 "\n"
-"if(P<P_old)\n"
-"{\n"
-"   inc=-inc;\n"
-" }\n"
-" \n"
-"Dref=Dref+inc*DeltaD;\n"
+"if(MPPT_Mode == 1){\n"
+"\t// MPPT Mode\n"
+"\tif(P<P_old)\n"
+"\t{\n"
+"\t   inc=-inc;\n"
+"\t\tDeltaD=DeltaD_Max/100;\n"
+"\t\tif(P-P_old > P*0.1 || P_old-P > P*0.1){\n"
+"\t\t\tDeltaD=DeltaD_Max;\n"
+"\t\t}\n"
+"\t}\n"
+"\n"
+"\tDref=Dref+inc*DeltaD;\n"
+"}\n"
+"else if(MPPT_Mode == 0){\n"
+"\t// Non-MPPT Mode\n"
+"\tkp_term = (I_bat + 2)*kp;\n"
+"\tki_term = ki_term*0.99 + (I_bat + 2)*ki;\n"
+"\tDeltaD = (kp_term + ki_term)*0.0001;\n"
+"\n"
+"\n"
+"\t/*DeltaD=DeltaD_Max/1000;\n"
+"\tif(I_bat < 1.2*I_bat_MAX){\n"
+"\t\tDeltaD=DeltaD_Max/500;\n"
+"\t}\n"
+"\tif(I_bat < I_bat_MAX){\n"
+"\t\tinc = -1;\n"
+"\t}\n"
+"\tif(I_bat > I_bat_MAX){\n"
+"\t\tinc = 1;\n"
+"\t}\n"
+"\t*/\n"
+"\n"
+"\n"
+"\t\n"
+"\t\n"
+"\t\n"
+"\tDref=Dref+inc*DeltaD;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
 "\n"
 "if (Dref>D_MAX)\n"
 "{\n"
-"Dref=D_MAX;\n"
+"\tDref=D_MAX;\n"
 "}\n"
-"if (Dref<D_MIN)\n"
+"else if (Dref<D_MIN)\n"
 "{\n"
-"Dref=D_MIN;\n"
+"\tDref=D_MIN;\n"
 "}\n"
-"\n"
 "\n"
 "Output(0) = Dref;\n"
+"\n"
                 Show          off
               }
               Parameter {
                 Variable      "UpdateFcn"
                 Value         "P_old = P;\n"
-"\n"
-"\n"
                 Show          off
               }
               Parameter {
@@ -952,7 +1006,7 @@ Plecs {
             }
             Component {
               Type          Input
-              Name          "v,i"
+              Name          "v,i,i_bat"
               Show          on
               Position      [40, 40]
               Direction     right
@@ -970,14 +1024,14 @@ Plecs {
             }
             Connection {
               Type          Signal
-              SrcComponent  "v,i"
+              SrcComponent  "v,i,i_bat"
               SrcTerminal   1
-              DstComponent  "dP/dV calc"
+              DstComponent  "code"
               DstTerminal   1
             }
             Connection {
               Type          Signal
-              SrcComponent  "dP/dV calc"
+              SrcComponent  "code"
               SrcTerminal   2
               DstComponent  "duty"
               DstTerminal   1
@@ -993,7 +1047,7 @@ Plecs {
           Flipped       off
           Parameter {
             Variable      "Width"
-            Value         "2"
+            Value         "3"
             Show          off
           }
         }
@@ -1037,8 +1091,8 @@ Plecs {
           Type          Output
           Name          "duty"
           Show          on
-          Position      [395, 30]
-          Direction     up
+          Position      [485, 125]
+          Direction     right
           Flipped       off
           Parameter {
             Variable      "Index"
@@ -1051,11 +1105,29 @@ Plecs {
             Show          off
           }
         }
+        Component {
+          Type          Input
+          Name          "I_BAT"
+          Show          on
+          Position      [50, 135]
+          Direction     left
+          Flipped       on
+          Parameter {
+            Variable      "Index"
+            Value         "4"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
         Connection {
           Type          Signal
           SrcComponent  "Mux"
           SrcTerminal   1
-          DstComponent  "MPP\ncontroller"
+          DstComponent  "controller"
           DstTerminal   2
         }
         Connection {
@@ -1069,7 +1141,7 @@ Plecs {
             DstTerminal   1
           }
           Branch {
-            Points        [120, 130]
+            Points        [120, 125]
             DstComponent  "Mux"
             DstTerminal   3
           }
@@ -1090,11 +1162,17 @@ Plecs {
         }
         Connection {
           Type          Signal
-          SrcComponent  "MPP\ncontroller"
+          SrcComponent  "controller"
           SrcTerminal   1
-          Points        [395, 125]
           DstComponent  "duty"
           DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "I_BAT"
+          SrcTerminal   1
+          DstComponent  "Mux"
+          DstTerminal   4
         }
       }
     }
@@ -1139,7 +1217,7 @@ Plecs {
           Flipped       off
           Parameter {
             Variable      "R"
-            Value         "20"
+            Value         "60"
             Show          off
           }
         }
@@ -1180,7 +1258,7 @@ Plecs {
           Flipped       off
           Parameter {
             Variable      "R"
-            Value         "20"
+            Value         "60"
             Show          off
           }
         }
@@ -1188,7 +1266,7 @@ Plecs {
           Type          Step
           Name          "Sun1"
           Show          on
-          Position      [125, 125]
+          Position      [120, 110]
           Direction     right
           Flipped       off
           Parameter {
@@ -1198,12 +1276,12 @@ Plecs {
           }
           Parameter {
             Variable      "Before"
-            Value         "0"
+            Value         "1"
             Show          on
           }
           Parameter {
             Variable      "After"
-            Value         "1"
+            Value         "0"
             Show          on
           }
           Parameter {
@@ -1289,6 +1367,7 @@ Plecs {
           Type          Signal
           SrcComponent  "Sun1"
           SrcTerminal   1
+          Points        [145, 110]
           DstComponent  "FET3"
           DstTerminal   3
         }
@@ -1431,7 +1510,7 @@ Plecs {
       Flipped       off
       Parameter {
         Variable      "L"
-        Value         "5e-03"
+        Value         "10e-03"
         Show          on
       }
       Parameter {
@@ -1442,14 +1521,14 @@ Plecs {
     }
     Component {
       Type          DCVoltageSource
-      Name          "V_dc"
+      Name          "V_BAT"
       Show          on
       Position      [505, 340]
       Direction     down
       Flipped       on
       Parameter {
         Variable      "V"
-        Value         "12"
+        Value         "36"
         Show          on
       }
     }
@@ -1463,7 +1542,7 @@ Plecs {
     }
     Component {
       Type          Ammeter
-      Name          "Am3"
+      Name          "I_BAT"
       Show          on
       Position      [545, 280]
       Direction     left
@@ -1570,7 +1649,7 @@ Plecs {
         Variable      "fs"
         Prompt        "Switching frequency"
         Type          FreeText
-        Value         "10e+3"
+        Value         "20e+3"
         Show          on
         Tunable       off
         TabName       ""
@@ -1843,19 +1922,20 @@ Plecs {
       Position      [615, 225]
       Direction     up
       Flipped       off
-      Location      [0, 23; 1920, 1020]
+      Location      [0, 26; 1539, 850]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAeAAAAAY/w"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABQAP///wAAB4AAAANjAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAeEAAAAb/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4QAAABfAP///wAAB4QAAANzAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAALeAMAAAAGAAAAB"
-"QAAAGQAAAAGAAAAZAAAAAgAAABkAAAACQAAAGQAAAADAAAAZAAAAAQAAABkAAAHgAAAAAsBAAABAA"
-"AAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAC0AAAAAQAAAAAAAABkAAAAAQAAAAAAAABkAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAABk"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAWgAAAAAQAAAAAAAAPoAAAAACQ="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"AAAAGQAAAAJAAAAZAAAAAYAAABkAAAABwAAAGQAAAAEAAAAZAAAAAUAAABkAAAAAgAAAGQAAAADAA"
+"AAZAAAAAEAAABkAAAHhAAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAADPAAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"Aa1AAAAAQAAAAAAAAPoAAAAACs="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0.0"
@@ -1904,18 +1984,18 @@ Plecs {
       Flipped       off
       Location      [489, 362; 843, 593]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAAWIAAADMAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAAAbsAAAECAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAACAAAAGQAAAAJAAAAZAAAAAEAAABkAAAAAgAAAGQAAAADAA"
-"AAZAAAAAQAAABkAAAAewAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAABXAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"AAAAGQAAAAJAAAAZAAAAAYAAABkAAAABwAAAGQAAAAEAAAAZAAAAAUAAABkAAAAAgAAAGQAAAADAA"
+"AAZAAAAAEAAABkAAAAggAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAABXAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAkAAAAAQAAAAAAAAPoAAAAACQ="
+"AArAAAAAQAAAAAAAAPoAAAAACs="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0.0"
@@ -1964,18 +2044,18 @@ Plecs {
       Flipped       off
       Location      [489, 362; 843, 593]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAAWIAAADMAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAAAbsAAAECAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAACAAAAGQAAAAJAAAAZAAAAAEAAABkAAAAAgAAAGQAAAADAA"
-"AAZAAAAAQAAABkAAAAewAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAABXAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"AAAAGQAAAAJAAAAZAAAAAYAAABkAAAABwAAAGQAAAAEAAAAZAAAAAUAAABkAAAAAgAAAGQAAAADAA"
+"AAZAAAAAEAAABkAAAAggAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAABXAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAkAAAAAQAAAAAAAAPoAAAAACQ="
+"AArAAAAAQAAAAAAAAPoAAAAACs="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0.0"
@@ -2035,7 +2115,7 @@ Plecs {
         Variable      "fs"
         Prompt        "Switching frequency"
         Type          FreeText
-        Value         "10e+3"
+        Value         "20e+3"
         Show          on
         Tunable       off
         TabName       ""
@@ -2307,23 +2387,23 @@ Plecs {
       Type          Scope
       Name          "Scope8"
       Show          on
-      Position      [180, 250]
+      Position      [245, 190]
       Direction     up
       Flipped       off
       Location      [489, 362; 843, 593]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAAWIAAADMAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAAAbsAAAECAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAACAAAAGQAAAAJAAAAZAAAAAEAAABkAAAAAgAAAGQAAAADAA"
-"AAZAAAAAQAAABkAAAA2AAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAC0AAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"AAAAGQAAAAJAAAAZAAAAAYAAABkAAAABwAAAGQAAAAEAAAAZAAAAAUAAABkAAAAAgAAAGQAAAADAA"
+"AAZAAAAAEAAABkAAAA3wAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAAC0AAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAkAAAAAQAAAAAAAAPoAAAAACQ="
+"AArAAAAAQAAAAAAAAPoAAAAACs="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0.0"
@@ -2365,9 +2445,9 @@ Plecs {
     }
     Component {
       Type          Constant
-      Name          "Pref"
+      Name          "I_bat_MAX"
       Show          on
-      Position      [880, 330]
+      Position      [285, 360]
       Direction     right
       Flipped       off
       Frame         [-20, -10; 20, 10]
@@ -2375,7 +2455,7 @@ Plecs {
       LabelAlign    up
       Parameter {
         Variable      "Value"
-        Value         "200"
+        Value         "-2"
         Show          on
       }
       Parameter {
@@ -2388,7 +2468,7 @@ Plecs {
       Type          Sum
       Name          "Sum"
       Show          off
-      Position      [955, 330]
+      Position      [360, 360]
       Direction     up
       Flipped       on
       Parameter {
@@ -2411,7 +2491,7 @@ Plecs {
       Type          Subsystem
       Name          "PI voltage\ncontroller"
       Show          on
-      Position      [1030, 330]
+      Position      [435, 360]
       Direction     up
       Flipped       off
       Frame         [-20, -20; 20, 20]
@@ -2452,7 +2532,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [352, 422; 743, 586]
+        Location      [352, 422; 814, 603]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -2660,49 +2740,51 @@ Plecs {
       Position      [1120, 165]
       Direction     up
       Flipped       off
-      Location      [640, 280; 990, 507]
+      Location      [0, 26; 1536, 807]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAAV4AAADIAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAG4A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAAB4AAAAOxAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAACAAAAGQAAAAJAAAAZAAAAAEAAABkAAAAAgAAAGQAAAADAA"
-"AAZAAAAAQAAABkAAAA2QAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAC1AAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"AAAAGQAAAAJAAAAZAAAAAYAAABkAAAABwAAAGQAAAAEAAAAZAAAAAUAAABkAAAAAgAAAGQAAAADAA"
+"AAZAAAAAEAAABkAAAA+wAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAADQAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAkAAAAAQAAAAAAAAPoAAAAACQ="
+"AArAAAAAQAAAAAAAAPoAAAAACs="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "0"
+      Open          "1"
       Ts            "-1"
       SampleLimit   "0"
-      XAxisLabel    ""
+      XAxisLabel    "s"
       ShowLegend    "1"
       Axis {
-        Name          ""
+        Name          "Output Voltage"
         AutoScale     1
         MinValue      0
         MaxValue      1
         Signals       {}
         SignalTypes   [ ]
+        AxisLabel     "V"
         Untangle      0
         KeepBaseline  off
         BaselineValue 0
       }
       Axis {
-        Name          ""
+        Name          "Output Current"
         AutoScale     1
         MinValue      0
         MaxValue      1
         Signals       {}
         SignalTypes   [ ]
+        AxisLabel     "A"
         Untangle      0
         KeepBaseline  off
         BaselineValue 0
@@ -2760,20 +2842,20 @@ Plecs {
       Position      [1095, 255]
       Direction     up
       Flipped       off
-      Location      [489, 362; 843, 593]
+      Location      [200, 377; 554, 608]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAAWIAAADMAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAAAbsAAAECAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAACAAAAGQAAAAJAAAAZAAAAAEAAABkAAAAAgAAAGQAAAADAA"
-"AAZAAAAAQAAABkAAAAewAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAABXAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"AAAAGQAAAAJAAAAZAAAAAYAAABkAAAABwAAAGQAAAAEAAAAZAAAAAUAAABkAAAAAgAAAGQAAAADAA"
+"AAZAAAAAEAAABkAAAAggAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAABXAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAkAAAAAQAAAAAAAAPoAAAAACQ="
+"AArAAAAAQAAAAAAAAPoAAAAACs="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0.0"
@@ -2822,18 +2904,18 @@ Plecs {
       Flipped       off
       Location      [489, 362; 843, 593]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAAWIAAADMAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAAAbsAAAECAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAACAAAAGQAAAAJAAAAZAAAAAEAAABkAAAAAgAAAGQAAAADAA"
-"AAZAAAAAQAAABkAAAAewAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAABXAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"AAAAGQAAAAJAAAAZAAAAAYAAABkAAAABwAAAGQAAAAEAAAAZAAAAAUAAABkAAAAAgAAAGQAAAADAA"
+"AAZAAAAAEAAABkAAAAswAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAACIAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAkAAAAAQAAAAAAAAPoAAAAACQ="
+"AArAAAAAQAAAAAAAAPoAAAAACs="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0.0"
@@ -2907,7 +2989,7 @@ Plecs {
       Branch {
         Points        [435, 35]
         Branch {
-          DstComponent  "Vm1"
+          DstComponent  "V_PV"
           DstTerminal   1
         }
         Branch {
@@ -2922,19 +3004,19 @@ Plecs {
       SrcTerminal   2
       Points        [315, 125]
       Branch {
-        DstComponent  "Am1"
+        DstComponent  "I_PV"
         DstTerminal   1
       }
       Branch {
         Points        [435, 125]
         Branch {
-          DstComponent  "Vm1"
+          DstComponent  "V_PV"
           DstTerminal   2
         }
         Branch {
           Points        [695, 125]
           Branch {
-            DstComponent  "FET2"
+            DstComponent  "M0"
             DstTerminal   2
           }
           Branch {
@@ -2973,7 +3055,7 @@ Plecs {
                 Points        [660, 400]
                 Branch {
                   Points        [505, 400]
-                  DstComponent  "V_dc"
+                  DstComponent  "V_BAT"
                   DstTerminal   2
                 }
                 Branch {
@@ -2991,7 +3073,7 @@ Plecs {
       SrcComponent  "PV"
       SrcTerminal   2
       Points        [200, 125]
-      DstComponent  "Am1"
+      DstComponent  "I_PV"
       DstTerminal   2
     }
     Connection {
@@ -3004,7 +3086,7 @@ Plecs {
         DstTerminal   1
       }
       Branch {
-        DstComponent  "FET2"
+        DstComponent  "M0"
         DstTerminal   1
       }
     }
@@ -3018,7 +3100,7 @@ Plecs {
         DstTerminal   3
       }
       Branch {
-        Points        [165, 125; 85, 125; 85, 200]
+        Points        [165, 55; 85, 55; 85, 20]
         DstComponent  "Scope5"
         DstTerminal   1
       }
@@ -3095,29 +3177,13 @@ Plecs {
       }
     }
     Connection {
-      Type          Wire
-      SrcComponent  "V_dc"
-      SrcTerminal   1
-      Points        [505, 280]
-      DstComponent  "Am3"
-      DstTerminal   1
-    }
-    Connection {
       Type          Signal
-      SrcComponent  "Am3"
-      SrcTerminal   3
-      Points        [545, 225]
-      DstComponent  "Scope"
-      DstTerminal   1
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Vm1"
+      SrcComponent  "V_PV"
       SrcTerminal   3
       Points        [505, 75; 505, 90]
       Branch {
-        Points        [505, 140; 260, 140]
-        DstComponent  "MPPT \nController"
+        Points        [505, 140; 100, 140]
+        DstComponent  "M0 \nController"
         DstTerminal   2
       }
       Branch {
@@ -3127,7 +3193,7 @@ Plecs {
     }
     Connection {
       Type          Wire
-      SrcComponent  "Am3"
+      SrcComponent  "I_BAT"
       SrcTerminal   2
       DstComponent  "L1"
       DstTerminal   1
@@ -3139,7 +3205,7 @@ Plecs {
       Points        [460, 180; 460, 155; 490, 155]
       Branch {
         Points        [610, 155; 610, 80]
-        DstComponent  "FET2"
+        DstComponent  "M0"
         DstTerminal   3
       }
       Branch {
@@ -3150,22 +3216,7 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "Am1"
-      SrcTerminal   3
-      Points        [250, 150]
-      Branch {
-        DstComponent  "MPPT \nController"
-        DstTerminal   1
-      }
-      Branch {
-        Points        [205, 150; 205, 230; 150, 230]
-        DstComponent  "Scope8"
-        DstTerminal   1
-      }
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Pref"
+      SrcComponent  "I_bat_MAX"
       SrcTerminal   1
       DstComponent  "Sum"
       DstTerminal   2
@@ -3210,36 +3261,6 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "Product"
-      SrcTerminal   1
-      Points        [1020, 250; 1020, 255]
-      Branch {
-        Points        [1020, 290; 955, 290]
-        DstComponent  "Sum"
-        DstTerminal   3
-      }
-      Branch {
-        DstComponent  "Scope9"
-        DstTerminal   1
-      }
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "MPPT \nController"
-      SrcTerminal   3
-      Points        [320, 165; 320, 180; 340, 180]
-      Branch {
-        DstComponent  "PWM from Duty Cycle1"
-        DstTerminal   2
-      }
-      Branch {
-        Points        [340, 245]
-        DstComponent  "Scope10"
-        DstTerminal   1
-      }
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "PWM from Duty Cycle"
       SrcTerminal   1
       Points        [525, 495]
@@ -3248,7 +3269,7 @@ Plecs {
         DstTerminal   2
       }
       Branch {
-        Points        [525, 605; 660, 605; 660, 225]
+        Points        [525, 605; 675, 605; 675, 225]
         DstComponent  "M1"
         DstTerminal   3
       }
@@ -3268,6 +3289,75 @@ Plecs {
         DstComponent  "Scope1"
         DstTerminal   1
       }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "I_PV"
+      SrcTerminal   3
+      Points        [250, 150; 205, 150; 205, 155]
+      Branch {
+        Points        [205, 170; 215, 170]
+        DstComponent  "Scope8"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [90, 155]
+        DstComponent  "M0 \nController"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "M0 \nController"
+      SrcTerminal   3
+      Points        [340, 245]
+      Branch {
+        Points        [340, 180]
+        DstComponent  "PWM from Duty Cycle1"
+        DstTerminal   2
+      }
+      Branch {
+        DstComponent  "Scope10"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "V_BAT"
+      SrcTerminal   1
+      Points        [505, 280]
+      DstComponent  "I_BAT"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "I_BAT"
+      SrcTerminal   3
+      Points        [545, 255]
+      Branch {
+        Points        [545, 225]
+        DstComponent  "Scope"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [445, 255; 445, 310; -5, 310; -5, 245]
+        DstComponent  "M0 \nController"
+        DstTerminal   4
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Product"
+      SrcTerminal   1
+      Points        [1020, 250; 1020, 255]
+      DstComponent  "Scope9"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "PI voltage\ncontroller"
+      SrcTerminal   1
+      Points        [475, 360]
     }
   }
 }
