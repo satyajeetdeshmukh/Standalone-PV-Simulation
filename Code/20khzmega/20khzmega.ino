@@ -1,10 +1,8 @@
 void setup()
 {
  pinMode(9, OUTPUT);  // on 2A   //Pin 9 is 2B on the mega
- pinMode(10, OUTPUT); // on 2B  //pin 10 is 2A on the mega
  pinMode(2, OUTPUT);  // on 2A   //Pin 9 is 2B on the mega
  pinMode(6, OUTPUT);  // on 2A   //Pin 9 is 2B on the mega
- pinMode(5, OUTPUT); // on 2B  //pin 10 is 2A on the mega
 
  TCCR2A = _BV(COM2A1) | _BV(COM2B1) | _BV(WGM21) | _BV(WGM20) ; // non-Inverting PWM,
  OCR2A = 99;
