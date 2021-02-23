@@ -681,7 +681,7 @@ Plecs {
     }
     Component {
       Type          Subsystem
-      Name          "M0 \nController"
+      Name          "Controller"
       Show          on
       Position      [175, 255]
       Direction     up
@@ -1930,9 +1930,9 @@ Plecs {
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"QAAAGQAAAAIAAAAZAAAAAcAAABkAAAABgAAAGQAAAAFAAAAZAAAAAQAAABkAAAAAwAAAGQAAAACAA"
-"AAZAAAAAEAAABkAAAHhAAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAADPAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
+"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAACAAAAGQAAAAJAAAAZAAAAAEAAABkAAAAAgAAAGQAAAADAA"
+"AAZAAAAAQAAABkAAAHhAAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAADPAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
 "Aa1AAAAAQAAAAAAAAPoAAAAACs="
@@ -2444,296 +2444,6 @@ Plecs {
       }
     }
     Component {
-      Type          Constant
-      Name          "I_bat_MAX"
-      Show          on
-      Position      [285, 360]
-      Direction     right
-      Flipped       off
-      Frame         [-20, -10; 20, 10]
-      LabelPosition [0, 13]
-      LabelAlign    up
-      Parameter {
-        Variable      "Value"
-        Value         "-2"
-        Show          on
-      }
-      Parameter {
-        Variable      "DataType"
-        Value         "10"
-        Show          off
-      }
-    }
-    Component {
-      Type          Sum
-      Name          "Sum"
-      Show          off
-      Position      [360, 360]
-      Direction     up
-      Flipped       on
-      Parameter {
-        Variable      "IconShape"
-        Value         "2"
-        Show          off
-      }
-      Parameter {
-        Variable      "Inputs"
-        Value         "|+-"
-        Show          off
-      }
-      Parameter {
-        Variable      "DataType"
-        Value         "11"
-        Show          off
-      }
-    }
-    Component {
-      Type          Subsystem
-      Name          "PI voltage\ncontroller"
-      Show          on
-      Position      [435, 360]
-      Direction     up
-      Flipped       off
-      Frame         [-20, -20; 20, 20]
-      LabelPosition [0, 23]
-      LabelAlign    up
-      SampleTime    "-1"
-      CodeGenDiscretizationMethod "2"
-      CodeGenTarget "Generic"
-      MaskIconFrame on
-      MaskIconOpaque off
-      MaskIconRotates on
-      Parameter {
-        Variable      "kp"
-        Prompt        "kp"
-        Type          FreeText
-        Value         "0.01"
-        Show          off
-        Tunable       off
-        TabName       ""
-      }
-      Parameter {
-        Variable      "ki"
-        Prompt        "ki"
-        Type          FreeText
-        Value         "0.001"
-        Show          off
-        Tunable       off
-        TabName       ""
-      }
-      Terminal {
-        Type          Output
-        Position      [24, 0]
-        Direction     right
-      }
-      Terminal {
-        Type          Input
-        Position      [-20, 0]
-        Direction     left
-      }
-      Schematic {
-        Location      [352, 422; 814, 603]
-        ZoomFactor    1
-        SliderPosition [0, 0]
-        ShowBrowser   off
-        BrowserWidth  100
-        Component {
-          Type          Gain
-          Name          "kp"
-          Show          off
-          Position      [145, 75]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "K"
-            Value         "kp"
-            Show          off
-          }
-          Parameter {
-            Variable      "Multiplication"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "DataType"
-            Value         "11"
-            Show          off
-          }
-        }
-        Component {
-          Type          Gain
-          Name          "ki"
-          Show          off
-          Position      [145, 140]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "K"
-            Value         "ki"
-            Show          off
-          }
-          Parameter {
-            Variable      "Multiplication"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "DataType"
-            Value         "11"
-            Show          off
-          }
-        }
-        Component {
-          Type          Integrator
-          Name          "Integrator"
-          Show          off
-          Position      [200, 140]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "ExternalReset"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "InitialConditionSource"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "x0"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "ShowStatePort"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "EnableWrapping"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "UpperLimit"
-            Value         "inf"
-            Show          off
-          }
-          Parameter {
-            Variable      "LowerLimit"
-            Value         "-inf"
-            Show          off
-          }
-        }
-        Component {
-          Type          Output
-          Name          "y"
-          Show          on
-          Position      [325, 105]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Index"
-            Value         "1"
-            Show          on
-          }
-          Parameter {
-            Variable      "Width"
-            Value         "-1"
-            Show          off
-          }
-        }
-        Component {
-          Type          Input
-          Name          "e"
-          Show          on
-          Position      [55, 110]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Index"
-            Value         "2"
-            Show          on
-          }
-          Parameter {
-            Variable      "Width"
-            Value         "-1"
-            Show          off
-          }
-        }
-        Component {
-          Type          Sum
-          Name          "Sum1"
-          Show          off
-          Position      [265, 105]
-          Direction     up
-          Flipped       off
-          Parameter {
-            Variable      "IconShape"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "Inputs"
-            Value         "++"
-            Show          off
-          }
-          Parameter {
-            Variable      "DataType"
-            Value         "11"
-            Show          off
-          }
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "ki"
-          SrcTerminal   2
-          DstComponent  "Integrator"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "kp"
-          SrcTerminal   2
-          Points        [230, 75; 230, 100]
-          DstComponent  "Sum1"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Integrator"
-          SrcTerminal   2
-          Points        [230, 140; 230, 110]
-          DstComponent  "Sum1"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "e"
-          SrcTerminal   1
-          Points        [100, 110]
-          Branch {
-            Points        [100, 75]
-            DstComponent  "kp"
-            DstTerminal   1
-          }
-          Branch {
-            Points        [100, 140]
-            DstComponent  "ki"
-            DstTerminal   1
-          }
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Sum1"
-          SrcTerminal   1
-          DstComponent  "y"
-          DstTerminal   1
-        }
-      }
-    }
-    Component {
       Type          Scope
       Name          "Scope2"
       Show          on
@@ -2748,9 +2458,9 @@ Plecs {
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"QAAAGQAAAAIAAAAZAAAAAcAAABkAAAABgAAAGQAAAAFAAAAZAAAAAQAAABkAAAAAwAAAGQAAAACAA"
-"AAZAAAAAEAAABkAAAA+wAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAADQAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
+"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAACAAAAGQAAAAJAAAAZAAAAAEAAABkAAAAAgAAAGQAAAADAA"
+"AAZAAAAAQAAABkAAAA+wAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAADQAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
 "AArAAAAAQAAAAAAAAPoAAAAACs="
@@ -2974,84 +2684,6 @@ Plecs {
         Variable      "DataType"
         Value         "10"
         Show          off
-      }
-    }
-    Component {
-      Type          Product
-      Name          "Product1"
-      Show          on
-      Position      [430, 20]
-      Direction     up
-      Flipped       off
-      Parameter {
-        Variable      "Inputs"
-        Value         "2"
-        Show          off
-      }
-      Parameter {
-        Variable      "DataType"
-        Value         "10"
-        Show          off
-      }
-    }
-    Component {
-      Type          Scope
-      Name          "Scope11"
-      Show          on
-      Position      [535, 20]
-      Direction     up
-      Flipped       off
-      Location      [489, 362; 843, 593]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAAAbsAAAECAAAA"
-"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
-"AAAAA=="
-      SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"QAAAGQAAAAIAAAAZAAAAAcAAABkAAAABgAAAGQAAAAFAAAAZAAAAAQAAABkAAAAAwAAAGQAAAACAA"
-"AAZAAAAAEAAABkAAAAggAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAABXAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AArAAAAAQAAAAAAAAPoAAAAACs="
-      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-      Axes          "1"
-      TimeRange     "0.0"
-      ScrollingMode "1"
-      SingleTimeAxis "1"
-      Open          "0"
-      Ts            "-1"
-      SampleLimit   "0"
-      XAxisLabel    ""
-      ShowLegend    "1"
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-        KeepBaseline  off
-        BaselineValue 0
-      }
-      Fourier {
-        SingleXAxis       on
-        AxisLabel         "Frequency"
-        Scaling           0
-        PhaseDisplay      0
-        ShowFourierLegend off
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-          KeepBaseline  off
-          BaselineValue 0
-        }
       }
     }
     Connection {
@@ -3279,20 +2911,6 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "I_bat_MAX"
-      SrcTerminal   1
-      DstComponent  "Sum"
-      DstTerminal   2
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Sum"
-      SrcTerminal   1
-      DstComponent  "PI voltage\ncontroller"
-      DstTerminal   2
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "Vm2"
       SrcTerminal   3
       Points        [955, 85; 955, 155]
@@ -3355,7 +2973,7 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "M0 \nController"
+      SrcComponent  "Controller"
       SrcTerminal   3
       Points        [340, 245]
       Branch {
@@ -3388,7 +3006,7 @@ Plecs {
       }
       Branch {
         Points        [445, 255; 445, 310; -5, 310; -5, 245]
-        DstComponent  "M0 \nController"
+        DstComponent  "Controller"
         DstTerminal   4
       }
     }
@@ -3402,63 +3020,34 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "PI voltage\ncontroller"
-      SrcTerminal   1
-      Points        [475, 360]
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "I_PV"
       SrcTerminal   3
-      Points        [250, 150; 240, 150]
+      Points        [250, 150; 205, 150; 205, 155]
       Branch {
-        Points        [205, 150; 205, 155]
-        Branch {
-          Points        [205, 170; 215, 170]
-          DstComponent  "Scope8"
-          DstTerminal   1
-        }
-        Branch {
-          Points        [90, 155]
-          DstComponent  "M0 \nController"
-          DstTerminal   1
-        }
+        Points        [205, 170; 215, 170]
+        DstComponent  "Scope8"
+        DstTerminal   1
       }
       Branch {
-        Points        [240, 15]
-        DstComponent  "Product1"
-        DstTerminal   2
+        Points        [90, 155]
+        DstComponent  "Controller"
+        DstTerminal   1
       }
     }
     Connection {
       Type          Signal
       SrcComponent  "V_PV"
       SrcTerminal   3
-      Points        [495, 75]
+      Points        [505, 75; 505, 90]
       Branch {
-        Points        [505, 75; 505, 90]
-        Branch {
-          Points        [505, 140; 100, 140]
-          DstComponent  "M0 \nController"
-          DstTerminal   2
-        }
-        Branch {
-          DstComponent  "Scope6"
-          DstTerminal   1
-        }
+        Points        [505, 140; 100, 140]
+        DstComponent  "Controller"
+        DstTerminal   2
       }
       Branch {
-        Points        [495, 50; 400, 50]
-        DstComponent  "Product1"
-        DstTerminal   3
+        DstComponent  "Scope6"
+        DstTerminal   1
       }
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Product1"
-      SrcTerminal   1
-      DstComponent  "Scope11"
-      DstTerminal   1
     }
   }
 }
