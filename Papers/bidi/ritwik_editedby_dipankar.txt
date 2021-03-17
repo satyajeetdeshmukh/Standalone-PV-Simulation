@@ -1,0 +1,591 @@
+
+//###########################################################################
+#include "DSP28x_Project.h"     // Device Headerfile and Examples Include File
+
+#define w_dt		0.01570796327
+// ADC start parameters
+#if (CPU_FRQ_150MHZ)     // Default - 150 MHz SYSCLKOUT
+  #define ADC_MODCLK 0x2 // HSPCLK = SYSCLKOUT/2*ADC_MODCLK2 = 150/(2*3)   = 25.0 MHz
+#endif
+#if (CPU_FRQ_100MHZ)
+  #define ADC_MODCLK 0x1 // HSPCLK = SYSCLKOUT/2*ADC_MODCLK2 = 100/(2*2)   = 25.0 MHz
+#endif
+#define ADC_CKPS   0x0   // ADC module clock = HSPCLK/2*ADC_CKPS   = 25.0MHz/(1*2) = 12.5MHz
+#define ADC_SHCLK  0xf   // S/H width in ADC module periods                        = 16 ADC clocks
+#define AVG        200  // Average sample limit
+#define ZOFFSET    0x00  // Average Zero offset
+#define BUF_SIZE   256  // Sample buffer size
+#define BUF_SIZE1   256  // Sample buffer size
+/*#define BUF_SIZE2   256  // Sample buffer size
+#define BUF_SIZE3   256  // Sample buffer size */
+
+
+float32 I_b=0.0;
+float32 I_b1=0.0;
+float32 I_pv=0.0;
+float32 I_pv1=0.0;
+float32 I_pv_n=0.0;
+float32 I_pv_n1=0.0;
+float32 V_pv_n=0.0;
+float32 V_pv_n1=0.0;
+float32 Ir_n=1.0;
+float32 Ir_n1=3.0;
+float32 del_Ir=0.0;
+float32 del_I=0.0;
+float32 del_V=0.0;
+float32 y=0.0;
+float32 x=0.0;
+float32 dc_off;
+
+float32 Ipv_ref=0.0;
+float32 Ipv_ref_limit=0.0;
+float32 Ipv_error=0.0;
+float32 Ipv_er_n=0.0;
+float32 Ipv_er_n1=0.0;
+float32 Dpv = 0.0;
+float32 Dpv_limit = 0.0;
+float32 kp_ipv = 0.001;
+float32 ki_ipv = 40.0e-6;
+
+float32 Io_ref=0.0;
+float32 Ib_ref=0.0;
+float32 Ib_error=0.0;
+float32 Ib_er_n=0.0;
+float32 Ib_er_n1=0.0;
+float32 Db = 0.0;
+float32 Db_limit = 0.0;
+float32 kp_ib = 0.001;
+float32 ki_ib = 30.0e-6;
+float32 Ib_ref_limit = 0.0;
+
+float32 Vdc_ref=0.0;
+float32 V_dc=0.0;
+float32 V_dc1=0.0;
+float32 Vdc_error=0.0;
+float32 Vdc_er_n=0.0;
+float32 Vdc_er_n1=0.0;
+float32 kp_vdc = 0.001;
+float32 ki_vdc = 1.2e-6;
+
+float32 Vac_ref=0.0;
+float32 V_ac=0.0;
+float32 V_ac1=0.0;
+float32 I_ac_ref=0.0;
+float32 I_ac=0.0;
+float32 Vac_error=0.0;
+float32 I_ac1=0.0;
+float32 Vac_er_n=0.0;
+float32 Vac_er_n1=0.0;
+float32 kp_vac = 0.1;
+float32 ki_vac = 800.0e-6;
+float32 Iac_error=0.0;
+float32 Iac_er_n=0.0;
+float32 Iac_er_n1=0.0;
+float32 kp_iac = 0.1;
+float32 ki_iac = 800.0e-6;
+
+float32 V_alpha_r=0.0;
+float32 V_beta_r=0.0;
+float32 V_alpha=0.0;
+float32 V_beta=0.0;
+float32 Vd=0.0;
+float32 Vq=0.0;
+float32 Vd_r=0.0;
+float32 Vq_r=0.0;
+float32 Vd_error=0.0;
+float32 Vq_error=0.0;
+float32 kp_vd = 0.08;
+float32 ki_vd = 600.0e-6;
+float32 kp_vq = 0.08;
+float32 ki_vq = 600.0e-6;
+float32 Vd_er_n=0.0;
+float32 Vd_er_n1=0.0;
+float32 Vq_er_n=0.0;
+float32 Vq_er_n1=0.0;
+float32 Id_ref=0.0;
+float32 Iq_ref=0.0;
+float32 I_alpha_r=0.0;
+float32 I_beta_r=0.0;
+
+float32 t_s = 50.0e-6;
+float32 dc_off;
+float32 k = 0.2;
+float32 k1 = 5.0e-4;
+
+float32 sin = 0.0;
+float32 cos = 1.0;
+float32 mi = 0.8;
+float32 M = 0.0;
+float32 M_limit = 0.0;
+
+float32 hi_ref = 0.0;
+float32 lo_ref = 0.0;
+
+Uint16 i;
+Uint16 adc_int16;
+Uint32 adc_int;
+float32 adc_float; 
+float32 adc_float1; 
+
+Uint16 PWM1_CMP = 0, PWM2_CMP = 0, PWM3_CMP = 0, PWM4_CMP = 0, PWM_PRD = 1500, PWM_PRD1 = 1500;
+Uint16	i;
+
+void Gpio_select(void);
+
+interrupt void cpu_timer0_isr(void);
+interrupt void cpu_timer1_isr(void);
+interrupt void cpu_timer2_isr(void);
+
+void InitEPwm1(void);
+void InitEPwm2(void);
+void InitEPwm3(void);
+
+void main(void)
+{
+   InitSysCtrl();
+
+   EALLOW;
+   SysCtrlRegs.HISPCP.all = ADC_MODCLK;	// HSPCLK = SYSCLKOUT/ADC_MODCLK
+   EDIS;
+
+	GpioCtrlRegs.GPAMUX2.all=0x00000000;
+	GpioCtrlRegs.GPADIR.all=0xFFFFFFFF;		// GPIO PORTs  as output
+	GpioCtrlRegs.GPAQSEL2.all=0x00000000;   	// Set GPIO input qualifier values
+
+	GpioDataRegs.GPASET.all =0x00C00000;
+	GpioDataRegs.GPACLEAR.all =0x00C00000;
+
+   Gpio_select();	  
+   InitEPwm1Gpio();
+   InitEPwm2Gpio();  
+   InitEPwm3Gpio();
+
+   DINT;  // disable CPU interrupt
+
+   InitPieCtrl();
+
+   IER = 0x0000;
+   IFR = 0x0000;
+
+   InitPieVectTable();
+
+   InitAdc();  // For this example, init the ADC
+
+// Specific ADC setup for this example:
+   AdcRegs.ADCTRL1.bit.ACQ_PS = ADC_SHCLK;
+   AdcRegs.ADCTRL3.bit.ADCCLKPS = ADC_CKPS;
+   AdcRegs.ADCTRL1.bit.SEQ_CASC = 0x1;        // 1  Cascaded mode    
+   AdcRegs.ADCTRL3.bit.SMODE_SEL = 0x1;      //Simultaneous sampling mode
+   AdcRegs.ADCCHSELSEQ1.bit.CONV00 = 0x0;
+   AdcRegs.ADCCHSELSEQ1.bit.CONV01 = 0x1;
+   AdcRegs.ADCCHSELSEQ1.bit.CONV02 = 0x2;
+   AdcRegs.ADCCHSELSEQ1.bit.CONV03 = 0x3;
+
+   AdcRegs.ADCTRL1.bit.CONT_RUN = 1;       // Setup continuous run
+   AdcRegs.ADCMAXCONV.all = 0x0007;
+
+   EALLOW;  // This is needed to write to EALLOW protected registers
+   PieVectTable.TINT0 = &cpu_timer0_isr;
+   PieVectTable.XINT13 = &cpu_timer1_isr;
+   PieVectTable.TINT2 = &cpu_timer2_isr;
+   EDIS;    // This is needed to disable write to EALLOW protected registers
+
+   EALLOW;
+   SysCtrlRegs.PCLKCR0.bit.TBCLKSYNC = 0;
+   EDIS;
+
+   InitEPwm1();
+   InitEPwm2(); 
+   InitEPwm3();
+ 
+   EALLOW;
+   SysCtrlRegs.PCLKCR0.bit.TBCLKSYNC = 1;
+   EDIS
+
+   InitCpuTimers();   // For this example, only initialize the Cpu Timers
+
+#if (CPU_FRQ_150MHZ)
+   ConfigCpuTimer(&CpuTimer0, 150, 50);
+   ConfigCpuTimer(&CpuTimer1, 150, 2.0e5);
+   ConfigCpuTimer(&CpuTimer2, 150, 1);
+#endif
+
+   CpuTimer0Regs.TCR.all = 0x4001; // Use write-only instruction to set TSS bit = 0
+   CpuTimer1Regs.TCR.all = 0x4001; // Use write-only instruction to set TSS bit = 0
+   CpuTimer2Regs.TCR.all = 0x4001; // Use write-only instruction to set TSS bit = 0
+
+   IER |= M_INT1;			// M_INT1 = 0x0001
+   IER |= M_INT13;			//M_INT13 = 0x1000
+   IER |= M_INT14;		//M_INT14 = 0x2000
+   PieCtrlRegs.PIEIER1.bit.INTx7 = 1;		// interrupt generated by timer0 is map on line 1 , INT7 of pie vector table
+   EINT;   // Enable Global interrupt INTM
+   ERTM;   // Enable Global realtime interrupt DBGM
+                                                                                                                                                                                                                                                                                                               
+// Step 6. IDLE loop. Just sit and loop forever (optional):
+
+   for(;;);
+}
+
+
+interrupt void cpu_timer1_isr(void)
+{
+	del_I = I_pv_n1 - I_pv_n;
+	del_V = V_pv_n1 - V_pv_n;
+
+	del_Ir = 0.15;
+
+	if(del_V==0)
+	  {
+	   if(del_I==0)
+	     Ir_n1 = Ir_n;
+	   else
+	      {
+	       if(del_I > 0)
+	          Ir_n1 = Ir_n-del_Ir;
+		   else
+		   	  Ir_n1 = Ir_n+del_Ir;	
+		  }
+       }  
+	else
+	   {   
+	    y=(del_I/del_V);
+	    x=(-I_pv_n/V_pv_n); 
+		if(y==x)
+		  Ir_n1=Ir_n;
+		else
+		   {
+		    if(y>x)
+			   Ir_n1=Ir_n-del_Ir;
+			else
+			   Ir_n1=Ir_n+del_Ir;
+		   }
+		};
+	    
+//	Ipv_ref = Ir_n1;
+	I_pv_n = I_pv_n1;
+	V_pv_n = V_pv_n1;
+	Ir_n = Ir_n1;
+
+    PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
+}
+
+
+
+interrupt void cpu_timer0_isr(void)
+{
+
+   // Start SEQ1
+    AdcRegs.ADCTRL2.all = 0x2000;
+
+    while (AdcRegs.ADCST.bit.INT_SEQ1== 0) {} // Wait for interrupt
+    AdcRegs.ADCST.bit.INT_SEQ1_CLR = 1;
+	adc_int16 =((AdcRegs.ADCRESULT0)>>4 );
+	adc_int = adc_int16;
+	adc_float = adc_int;
+	adc_float1 = (adc_float*3.0)/4095.0;
+	adc_float1 = adc_float1 - 0.08;
+
+	V_pv_n1 = (adc_float1)/(0.056);  
+
+    while (AdcRegs.ADCST.bit.INT_SEQ1== 0) {} // Wait for interrupt
+    AdcRegs.ADCST.bit.INT_SEQ1_CLR = 1;
+	adc_int16 =((AdcRegs.ADCRESULT1)>>4 );
+	adc_int = adc_int16;
+	adc_float = adc_int;
+	adc_float1 = adc_float - 0.009;
+	adc_float1 = (adc_float1*3.0)/4095.0;
+//	adc_float1 = adc_float1 - 0.009;
+
+	I_pv_n1 = adc_float1/(0.2);
+
+    while (AdcRegs.ADCST.bit.INT_SEQ1== 0) {} // Wait for interrupt
+    AdcRegs.ADCST.bit.INT_SEQ1_CLR = 1;
+	adc_int16 =((AdcRegs.ADCRESULT2)>>4 );
+	adc_int = adc_int16;
+	adc_float = adc_int;
+	adc_float1 = (adc_float*3.0)/4095.0;
+
+	V_dc1 = adc_float1/(5.5e-3);
+
+//	V_dc = (1-k1)*V_dc + k1*V_dc1;  
+
+	V_dc = V_dc1;
+
+    while (AdcRegs.ADCST.bit.INT_SEQ1== 0) {} // Wait for interrupt
+    AdcRegs.ADCST.bit.INT_SEQ1_CLR = 1;
+	adc_int16 =((AdcRegs.ADCRESULT3)>>4 );
+	adc_int = adc_int16;
+	adc_float = adc_int;
+	dc_off = (adc_float*3.0)/4095.0;
+
+    while (AdcRegs.ADCST.bit.INT_SEQ1== 0) {} // Wait for interrupt
+    AdcRegs.ADCST.bit.INT_SEQ1_CLR = 1;
+	adc_int16 =((AdcRegs.ADCRESULT4)>>4 );
+	adc_int = adc_int16;
+	adc_float = adc_int;
+	adc_float1 = (adc_float*3.0)/4095.0;
+
+//	I_b1 = (adc_float1-1.54)/(0.2*0.5);
+	I_b1 = (adc_float1-1.54)/(0.2);
+
+	I_b = I_b1;   
+
+    while (AdcRegs.ADCST.bit.INT_SEQ1== 0) {} // Wait for interrupt
+    AdcRegs.ADCST.bit.INT_SEQ1_CLR = 1;
+	adc_int16 =((AdcRegs.ADCRESULT5)>>4 );
+	adc_int = adc_int16;
+	adc_float = adc_int;
+	adc_float1 = (adc_float*3.0)/4095.0;
+
+	V_ac1 = (adc_float1-1.5)/(3.0e-3);
+	V_ac = (1-k)*V_ac + k*V_ac1;
+
+    while (AdcRegs.ADCST.bit.INT_SEQ1== 0) {} // Wait for interrupt
+    AdcRegs.ADCST.bit.INT_SEQ1_CLR = 1;
+	adc_int16 =((AdcRegs.ADCRESULT6)>>4 );
+	adc_int = adc_int16;
+	adc_float = adc_int;
+	adc_float1 = (adc_float*3.0)/4095.0;
+
+	I_ac1 = (adc_float1-1.5)/(0.217);
+
+	I_ac = (1-k)*I_ac + k*I_ac1;
+
+	Vdc_ref = 400.0;
+
+	Vdc_er_n1 = Vdc_ref - V_dc;
+
+	Vdc_error = Vdc_er_n1 - Vdc_er_n;
+
+	Io_ref = Io_ref + kp_vdc*Vdc_error + ki_vdc*Vdc_er_n1;
+
+	Ib_ref = -1.00;
+
+	Ipv_ref = Io_ref - 1.1*Ib_ref;
+
+//	Ipv_ref = Io_ref;
+
+	if (Ipv_ref > 5.0)
+		Ipv_ref_limit = 5.0;
+	else if (Ipv_ref < 0.0)
+		Ipv_ref_limit = 0.0;
+	else
+		Ipv_ref_limit = Ipv_ref; 
+
+	if (Ib_ref > 6.0)
+		Ib_ref_limit = 6.0;
+	else if (Ib_ref < -6.0)
+		Ib_ref_limit = -6.0;
+	else
+		Ib_ref_limit = Ib_ref; 
+
+
+	Ipv_er_n1 = Ipv_ref_limit - I_pv_n1;
+
+	Ipv_error = Ipv_er_n1 - Ipv_er_n;
+
+	Dpv = Dpv + kp_ipv*Ipv_error + ki_ipv*Ipv_er_n1;
+   	
+	if (Dpv > 0.7)
+		Dpv_limit = 0.7;
+	else if (Dpv < 0.3)
+		Dpv_limit = 0.3;
+	else
+		Dpv_limit = Dpv;
+
+	PWM3_CMP  = Dpv_limit*PWM_PRD;
+
+	EPwm3Regs.CMPA.half.CMPA = PWM3_CMP;
+
+	sin = sin + cos*w_dt;
+	cos = cos - sin*w_dt;
+
+	Vac_ref = 325.0*sin;
+	
+	V_alpha_r = Vac_ref;
+	V_beta_r = 0.0;
+
+	Vd_r = cos*V_alpha_r + sin*V_beta_r;
+	Vq_r = -sin*V_alpha_r + cos*V_beta_r;
+
+	V_alpha = V_ac;
+	V_beta = 0.0;
+
+	Vd = cos*V_alpha + sin*V_beta;
+	Vq = -sin*V_alpha + cos*V_beta;
+
+	Vd_er_n1 = Vd_r - Vd;
+	Vq_er_n1 = Vq_r - Vq;
+
+	Vd_error = Vd_er_n1 - Vd_er_n;
+	Vq_error = Vq_er_n1 - Vq_er_n;
+
+	Id_ref = Id_ref + kp_vd*Vd_error + ki_vd*Vd_er_n1;
+	Iq_ref = Iq_ref + kp_vq*Vq_error + ki_vq*Vq_er_n1;
+
+	I_alpha_r = cos*Id_ref - sin*Iq_ref;
+	I_beta_r = sin*Id_ref + cos*Iq_ref;
+
+	I_ac_ref = I_alpha_r;
+
+	Iac_er_n1 = I_ac_ref - I_ac;
+
+	Iac_error = Iac_er_n1-Iac_er_n;
+
+	M = M + kp_iac*Iac_error + ki_iac*Iac_er_n1; 
+
+	if (M > 0.9)
+		M_limit = 0.9;
+	else if (M < -0.9)
+		M_limit = -0.9;
+	else
+		M_limit = M;
+
+//	PWM1_CMP  = (sin*mi)*PWM_PRD1;
+//	PWM2_CMP  = -(sin*mi)*PWM_PRD1;
+
+	PWM1_CMP  = M_limit*PWM_PRD1;
+	PWM2_CMP  = -M_limit*PWM_PRD1;
+
+    EPwm1Regs.CMPA.half.CMPA = PWM1_CMP;
+    EPwm2Regs.CMPA.half.CMPA = PWM2_CMP;
+
+    Ipv_er_n = Ipv_er_n1;
+
+    Vdc_er_n = Vdc_er_n1;
+
+    Iac_er_n = Iac_er_n1;
+
+//    Vac_er_n = Vac_er_n1;
+
+	Vd_er_n = Vd_er_n1;
+	Vq_er_n = Vq_er_n1;
+
+   // Acknowledge this interrupt to receive more interrupts from group 1
+   PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
+
+}
+
+interrupt void cpu_timer2_isr(void)
+{
+	hi_ref = Ib_ref_limit + 0.02;
+	lo_ref = Ib_ref_limit - 0.02;
+
+	if (I_b >= hi_ref)
+	   {	
+        GpioDataRegs.GPASET.bit.GPIO6 = 0x0;   // Load output latch
+		GpioDataRegs.GPACLEAR.bit.GPIO6 = 0x1;   // Load output latch
+        GpioDataRegs.GPACLEAR.bit.GPIO7 = 0x0;   // Load output latch
+        GpioDataRegs.GPASET.bit.GPIO7 = 0x1;   // Load output latch
+       };
+
+	if (I_b <= lo_ref)
+	   {
+		GpioDataRegs.GPACLEAR.bit.GPIO6 = 0x0;   // Load output latch
+        GpioDataRegs.GPASET.bit.GPIO6 = 0x1;   // Load output latch
+        GpioDataRegs.GPASET.bit.GPIO7 = 0x0;   // Load output latch
+        GpioDataRegs.GPACLEAR.bit.GPIO7 = 0x1;   // Load output latch
+       };
+
+    PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
+}
+
+void InitEPwm1()
+{
+
+   EPwm1Regs.TBPRD = PWM_PRD1;                     // Set timer period for frequency = 1kHz
+   EPwm1Regs.TBCTR = 0x0000;                      // Clear counter
+
+   // Setup TBCLK
+   EPwm1Regs.TBCTL.bit.CTRMODE = TB_COUNT_UPDOWN; // Count up_down = 2
+   EPwm1Regs.TBCTL.bit.HSPCLKDIV = TB_DIV2;       // Clock ratio to SYSCLKOUT
+   EPwm1Regs.TBCTL.bit.CLKDIV = TB_DIV2;          // Slow just to observe on the scope; TB_DIV4 = 0x2
+
+   // Setup compare
+   EPwm1Regs.CMPA.half.CMPA = 0;
+   EPwm1Regs.CMPCTL.bit.SHDWAMODE = 0x0;		// enable shadow mode
+   EPwm1Regs.CMPCTL.bit.LOADAMODE = 0x2;		// Change CMPA for CTR = 0 or  CTR = PRD 
+
+   EPwm1Regs.AQCTLA.bit.CAD = AQ_SET;             // Set PWM2A on Zero
+   EPwm1Regs.AQCTLA.bit.CAU = AQ_CLEAR;
+
+   EPwm1Regs.AQCTLB.bit.CAD = AQ_SET;           // Set PWM2A on Zero
+   EPwm1Regs.AQCTLB.bit.CAU = AQ_CLEAR;
+
+}
+
+
+
+void InitEPwm2()
+{
+
+   EPwm2Regs.TBPRD = PWM_PRD1;                     // Set timer period for frequency = 1kHz
+   EPwm2Regs.TBCTR = 0x0000;                      // Clear counter
+
+   // Setup TBCLK
+   EPwm2Regs.TBCTL.bit.CTRMODE = TB_COUNT_UPDOWN; // Count up_down = 2
+   EPwm2Regs.TBCTL.bit.HSPCLKDIV = TB_DIV2;       // Clock ratio to SYSCLKOUT
+   EPwm2Regs.TBCTL.bit.CLKDIV = TB_DIV2;          // Slow just to observe on the scope; TB_DIV4 = 0x2
+
+   // Setup compare
+   EPwm2Regs.CMPA.half.CMPA = 0;
+   EPwm2Regs.CMPCTL.bit.SHDWAMODE = 0x0;		// enable shadow mode
+   EPwm2Regs.CMPCTL.bit.LOADAMODE = 0x2;		// Change CMPA for CTR = 0 or  CTR = PRD 
+					
+   EPwm2Regs.AQCTLA.bit.CAD = AQ_SET;             // Set PWM2A on Zero
+   EPwm2Regs.AQCTLA.bit.CAU = AQ_CLEAR;
+
+   EPwm2Regs.AQCTLB.bit.CAD = AQ_SET;           // Set PWM2A on Zero
+   EPwm2Regs.AQCTLB.bit.CAU = AQ_CLEAR;
+}
+
+void InitEPwm3()
+{
+   EPwm3Regs.TBPRD = PWM_PRD;                         // Set timer period
+   EPwm3Regs.TBPHS.half.TBPHS = 0x0000;            // Phase is 0
+   EPwm3Regs.TBCTR = 0x0000;                       // Clear counter
+
+
+   // Setup TBCLK
+   EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UPDOWN; // Count up
+   EPwm3Regs.TBCTL.bit.PHSEN = TB_DISABLE;        // Disable phase loading
+   EPwm3Regs.TBCTL.bit.HSPCLKDIV = TB_DIV2;       // Clock ratio to SYSCLKOUT
+   EPwm3Regs.TBCTL.bit.CLKDIV = TB_DIV2;          // Slow so we can observe on the scope
+
+   // Setup compare
+   EPwm3Regs.CMPA.half.CMPA = 0;
+   EPwm3Regs.CMPCTL.bit.SHDWAMODE = 0x0;		// enable shadow mode
+   EPwm3Regs.CMPCTL.bit.LOADAMODE = 0x2;		// Change CMPA for CTR = 0 or  CTR = PRD 
+
+   // Set actions Qualifiers
+
+   EPwm3Regs.AQCTLA.bit.CAU = AQ_CLEAR;              // Set PWM3A on Zero
+   EPwm3Regs.AQCTLA.bit.CAD = AQ_SET;
+
+
+   EPwm3Regs.AQCTLB.bit.CAU = AQ_SET;            // Set PWM3A on Zero
+   EPwm3Regs.AQCTLB.bit.CAD = AQ_CLEAR;
+
+}
+
+void Gpio_select(void)
+{
+   
+    EALLOW;
+
+   GpioCtrlRegs.GPAPUD.bit.GPIO6 = 0;   // Enable pullup on GPIO6
+   GpioCtrlRegs.GPAMUX1.bit.GPIO6 = 0;  // GPIO6 = GPIO6
+   GpioCtrlRegs.GPADIR.bit.GPIO6 = 1;   // GPIO6 = output
+
+   GpioCtrlRegs.GPAPUD.bit.GPIO7 = 0;   // Enable pullup on GPIO6
+   GpioCtrlRegs.GPAMUX1.bit.GPIO7 = 0;  // GPIO6 = GPIO6
+   GpioCtrlRegs.GPADIR.bit.GPIO7 = 1;   // GPIO6 = output
+
+    EDIS;
+     
+}     
+
+
+//===========================================================================
+// No more.
+//===========================================================================
