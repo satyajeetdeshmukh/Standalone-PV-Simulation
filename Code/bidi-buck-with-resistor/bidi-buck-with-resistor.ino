@@ -21,6 +21,9 @@ float I_curr = 0;
 float I_ref = 0;
 
 void setup() {
+  Serial.begin(9600);
+
+  
   // initiate input and ouput pins
   // for current reading
   pinMode(A8, INPUT);
@@ -41,7 +44,7 @@ void setup() {
   // top
   ICR1 = 400;
   // duty cycle
-  OCR1A = 0.50 * 400;
+  OCR1A = 0.0 * 400;
   
   //timer 3
   // mode selection
@@ -51,7 +54,7 @@ void setup() {
   // top
   ICR3 = 400;
   // duty cycle
-  OCR3A = (0.5 + 0.02) * 400;
+  OCR3A = (0) * 400;
 
   GTCCR = 0; // release all timers
 }
@@ -68,6 +71,8 @@ void takeinputs(){
 }
 
 void loop() {
+  Serial.println(I_curr);
+  
   takeinputs();
   // calculate duty for hs
   float e_hs = I_ref - I_curr;
@@ -80,9 +85,13 @@ void loop() {
     ki_term_hs = -1;
   }
   duty_hs = ki_term_hs + kp_term_hs;
-
+  
+  if(duty_hs > 0.9) {
+    duty_hs = 0.9;
+  }
+  
   // calculate duty for ls
-  float e_ls = duty_hs - duty_ls;
+  float e_ls = (1-duty_hs) - (duty_ls+0.02);
   ki_term_ls += ki_ls * e_ls;
   kp_term_ls = kp_ls * e_ls;
   if(ki_term_ls > 2) {
@@ -92,8 +101,20 @@ void loop() {
     ki_term_ls = -1;
   }
   duty_ls = ki_term_ls + kp_term_ls;
+  
+  // limit duty cycles
+  
+  if(duty_ls > 0.9) {
+    duty_ls = 0.9;
+  }
 
+  // ensure dead band
+  if(duty_ls+0.02 > 1-duty_hs){
+    duty_ls = 1-duty_hs - 0.02;
+  }
+  
   // ensure dead time while updating timers
   OCR1A = duty_hs * 400;
-  OCR3A = (duty_ls + 0.02)*400;
+  OCR3A = (1-duty_ls)*400;
+
 }
