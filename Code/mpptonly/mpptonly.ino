@@ -16,12 +16,10 @@ void setup()
  //Serial.begin(9600);
 
  pinMode(A7, INPUT); // voltage of PV system
- pinMode(A8, INPUT); // current of PV system
- pinMode(A0, INPUT); // voltage of DC-Link
+ pinMode(A5, INPUT); // current of PV system
+ pinMode(A4, INPUT); // voltage of DC-Link
  
  pinMode(9, OUTPUT);  // pin for boost pwm
- pinMode(2, OUTPUT);  // bidi - buck
- pinMode(6, OUTPUT);  // bidi - boost
 
  TCCR2A = _BV(COM2A1) | _BV(COM2B1) | _BV(WGM21) | _BV(WGM20) ; // non-Inverting PWM,
  OCR2A = 99;
@@ -30,17 +28,17 @@ void setup()
  OCR2B = pv_boost_pwm;
 
  
- TCCR3A = _BV(COM3A1) | _BV(COM3B1) | _BV(WGM31)  ; // non-Inverting PWM,
- ICR3 = 99;
-  // Fast PWM and NO prescaling 16M/1024 // your CS20/CS21 settings are a prescaler of 32.
- TCCR3B =  _BV(WGM32) | _BV(CS31) | _BV(WGM33);  // Fast PWM and NO prescaling 16M/1024
- OCR3B = 50;
-
-TCCR4A = _BV(COM4A1) | _BV(COM4B1) | _BV(WGM41)  ; // non-Inverting PWM,
- ICR4 = 99;
-  // Fast PWM and NO prescaling 16M/1024 // your CS20/CS21 settings are a prescaler of 32.
- TCCR4B =  _BV(WGM42) | _BV(CS41) | _BV(WGM43);  // Fast PWM and NO prescaling 16M/1024
- OCR4A = 50;
+// TCCR3A = _BV(COM3A1) | _BV(COM3B1) | _BV(WGM31)  ; // non-Inverting PWM,
+// ICR3 = 99;
+//  // Fast PWM and NO prescaling 16M/1024 // your CS20/CS21 settings are a prescaler of 32.
+// TCCR3B =  _BV(WGM32) | _BV(CS31) | _BV(WGM33);  // Fast PWM and NO prescaling 16M/1024
+// OCR3B = 50;
+//
+//TCCR4A = _BV(COM4A1) | _BV(COM4B1) | _BV(WGM41)  ; // non-Inverting PWM,
+// ICR4 = 99;
+//  // Fast PWM and NO prescaling 16M/1024 // your CS20/CS21 settings are a prescaler of 32.
+// TCCR4B =  _BV(WGM42) | _BV(CS41) | _BV(WGM43);  // Fast PWM and NO prescaling 16M/1024
+// OCR4A = 50;
 
  }
 
@@ -82,14 +80,11 @@ void loop() {
   }
   pv_boost_pwm = pv_boost_pwm + pv_boost_pwm_inc * pv_boost_pwm_delta;
 
-  if(pv_boost_pwm>75){
-    pv_boost_pwm = 75;
-    //pv_boost_pwm_inc = -pv_boost_pwm_inc;
+  if(pv_boost_pwm>80){
+    pv_boost_pwm = 80;
   }
-
-  if(pv_boost_pwm<40){
-    pv_boost_pwm = 40;
-    //pv_boost_pwm_inc = -pv_boost_pwm_inc;
+  else if(pv_boost_pwm<10){
+    pv_boost_pwm = 10;
   }
 
   
