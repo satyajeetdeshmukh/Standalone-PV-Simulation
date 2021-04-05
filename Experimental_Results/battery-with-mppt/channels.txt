@@ -1,0 +1,4 @@
+ch 1 - V_pv
+ch 2 - I_pv
+ch 3 - V_dc
+Ch 4 - I_B
