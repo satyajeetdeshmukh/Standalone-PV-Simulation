@@ -2,7 +2,7 @@
 int debug_mode = 1;
 int mppt_mode = 1;
 int non_mppt_mode = 0;
-int relay_on_time = 20*1000;
+int relay_on_time = 20 * 1000;
 double Vdc_ref = 34;
 
 // duty cycles
@@ -21,8 +21,8 @@ double ki_term_vf = 0;
 double kp_term_vf = 0;
 
 // PI of non-mppt mode
-double kp_nm = 0.005;
-double ki_nm = 0.001;
+double kp_nm = 0.001;
+double ki_nm = 0.0001;
 double ki_term_nm = 0;
 double kp_term_nm = 0;
 
@@ -47,7 +47,7 @@ int relay_on = 0;
 double pv_power_old = 0;
 int pv_boost_duty_inc = 1;
 
-double pv_boost_duty_delta = 0.005;
+double pv_boost_duty_delta = 0.01;
 int count_power = 0;
 int max_count_power = 1;
 double pv_power = 0;
@@ -106,10 +106,10 @@ void configure_timers() {
 }
 
 void setup() {
-  if(debug_mode == 1){
+  if (debug_mode == 1) {
     Serial.begin(9600);
   }
-  
+
 
   // declare pins
   pinMode(pin_Ib, INPUT); // for current reading
@@ -225,8 +225,6 @@ void calc_and_limit_duty_hs() {
   }
 }
 
-
-
 void soft_start() {
   if (millis() > relay_on_time && relay_on == 0) {
     digitalWrite(pin_relay_bat, HIGH); // turn on battery relay
@@ -249,8 +247,6 @@ void soft_start() {
     soft_start_mode = 0;
   }
 }
-
-
 
 void mppt_func() {
 
@@ -284,9 +280,7 @@ void mppt_func() {
   }
 }
 
-
-
-void non_mppt_func(){
+void non_mppt_func() {
   // PI e = vdc ref - vdc read
   double e_nm = Vdc_ref - Vdc_read;
   if (abs(e_nm / Vdc_ref) < 0.025) {
@@ -301,14 +295,14 @@ void non_mppt_func(){
     ki_term_nm = -0.1;
   }
   pv_boost_duty = ki_term_nm + kp_term_nm;
-  
-  if(pv_boost_duty > 0.9){
+
+  if (pv_boost_duty > 0.9) {
     pv_boost_duty = 0.9;
   }
-  else if(pv_boost_duty<0){
+  else if (pv_boost_duty < 0) {
     pv_boost_duty = 0;
   }
-  
+
   // update
   OCR2B = pv_boost_duty * 100;
 }
@@ -316,40 +310,60 @@ void non_mppt_func(){
 double interval = 10000;
 double last_t = 0;
 double Ib_sum = 0;
+double power_deficit_sum = 0;
 
 void serial_print() {
   //Serial.println(duty_hs);
   //Serial.println(duty_ls);
   //Serial.println(relay_on);
-  //Serial.println(Vdc_read);
+  Serial.println(Vdc_read);
   Serial.println(Ib_read);
   //Serial.println(Ib_ref);
   //Serial.println(Vpv_read);
   //Serial.println(Ipv_read);
   //Serial.println(pv_boost_duty);
   Serial.println(Ib_sum);
+  Serial.println(power_deficit_sum);
   Serial.println();
 }
 
 
-void mppt_mode_selector(){
+
+void mppt_mode_selector() {
   double t = millis();
-  double et = t-last_t;
-  Ib_sum = Ib_sum*exp(-et/1000) + Ib_read;
-  last_t = t;
-  
-  //  mppt to non-mppt
-  if(Ib_sum > 25){
-    non_mppt_mode = 1;
-    mppt_mode = 0;
+  double et = t - last_t;
+  int power_deficit = 0;
+  Ib_sum = Ib_sum * exp(-et / 1000) + Ib_read;
+  if(Vdc_read < 0.9*Vdc_ref || Ib_read < 0.9*Ib_ref){
+    power_deficit = 1;
   }
+  else {
+    power_deficit = 0;
+  }
+  power_deficit_sum = power_deficit_sum * exp(-et / 10000) + power_deficit;
+  if (mppt_mode == 1) {
+    //  mppt to non-mppt
+    if (Ib_sum > 25) {
+      non_mppt_mode = 1;
+      mppt_mode = 0;
+    }
+  }
+  
+  else if(non_mppt_mode == 1){
+    // non-mppt to mppt
+    if(power_deficit_sum > 157){
+      mppt_mode = 1;
+      non_mppt_mode = 0;
+    }
+  }
+  last_t = t;
 }
 
 void loop() {
-  if(debug_mode == 1){
+  if (debug_mode == 1) {
     serial_print();
   }
-  
+
   // Battery relay is started 5 secs after controller starts. clear all initial kp, ki terms. after 2 seconds, change to post soft start mode.
   if (soft_start_mode == 1) {
     soft_start();
@@ -361,17 +375,17 @@ void loop() {
   if (mppt_mode == 1) {
     mppt_func();
   }
-  else if(non_mppt_mode == 1){
+  else if (non_mppt_mode == 1) {
     non_mppt_func();
   }
 
   if (millis() > relay_on_time) {
     // calc Ib_ref from voltage ref
-    if(mppt_mode == 1){
+    if (mppt_mode == 1) {
       calc_iref();
     }
-    else if(non_mppt_mode == 1){
-      Ib_ref = 1.0;
+    else if (non_mppt_mode == 1) {
+      Ib_ref = 1;
     }
 
     // calculate duty for hs using Ib_ref
