@@ -5,6 +5,17 @@ int non_mppt_mode = 0;
 int relay_on_time = 20 * 1000;
 double Vdc_ref = 34;
 
+// Pins
+const int pin_Ib = A8;// Ib current pin
+const int pin_Vdc = A12;// Vdc-link voltage pin
+const int pin_duty_hs = 11; // duty_hs pin
+const int pin_duty_ls = 5;// duty_ls pin
+const int pin_vcc_ib = 34;// Vcc for Ib sensor
+const int pin_relay_bat = 46;// Battery relay pin
+const int pin_Vpv = A9; // Voltage of PV
+const int pin_Ipv = A5; // Current of PV
+const int pin_duty_pv = 9; // pwm of pv
+
 // duty cycles
 double duty_hs = 0;
 double duty_ls = 0;
@@ -52,16 +63,7 @@ int count_power = 0;
 int max_count_power = 1;
 double pv_power = 0;
 
-// Pins
-const int pin_Ib = A8;// Ib current pin
-const int pin_Vdc = A12;// Vdc-link voltage pin
-const int pin_duty_hs = 11; // duty_hs pin
-const int pin_duty_ls = 5;// duty_ls pin
-const int pin_vcc_ib = 34;// Vcc for Ib sensor
-const int pin_relay_bat = 46;// Battery relay pin
-const int pin_Vpv = A9; // Voltage of PV
-const int pin_Ipv = A5; // Current of PV
-const int pin_duty_pv = 9; // pwm of pv
+
 
 // current reading and reference
 double Ib_read = 0;
@@ -103,29 +105,6 @@ void configure_timers() {
   OCR2B = 0 * 100;
 
   GTCCR = 0; // release all timers
-}
-
-void setup() {
-  if (debug_mode == 1) {
-    Serial.begin(9600);
-  }
-
-
-  // declare pins
-  pinMode(pin_Ib, INPUT); // for current reading
-  pinMode(pin_Vdc, INPUT); // for Vdc
-  pinMode(pin_duty_hs, OUTPUT); // for duty_hs, timer 1
-  pinMode(pin_duty_ls, OUTPUT); // for duty_ls, timer 3
-  pinMode(pin_vcc_ib, OUTPUT); // Ib current sensor Vcc
-  pinMode(pin_relay_bat, OUTPUT); // relay for battery
-  pinMode(pin_duty_pv, OUTPUT); // duty of boost pv
-
-  // initialize pins
-  digitalWrite(pin_vcc_ib, HIGH); // for ib sensor vcc
-  digitalWrite(pin_relay_bat, LOW); // for relay
-
-  // configure timers
-  configure_timers();
 }
 
 void takeinputs() {
@@ -359,7 +338,36 @@ void mppt_mode_selector() {
   last_t = t;
 }
 
+
+
+void setup() {
+  if (debug_mode == 1) {
+    Serial.begin(9600);
+  }
+
+
+  // declare pins
+  pinMode(pin_Ib, INPUT); // for current reading
+  pinMode(pin_Vdc, INPUT); // for Vdc
+  pinMode(pin_duty_hs, OUTPUT); // for duty_hs, timer 1
+  pinMode(pin_duty_ls, OUTPUT); // for duty_ls, timer 3
+  pinMode(pin_vcc_ib, OUTPUT); // Ib current sensor Vcc
+  pinMode(pin_relay_bat, OUTPUT); // relay for battery
+  pinMode(pin_duty_pv, OUTPUT); // duty of boost pv
+
+  // initialize pins
+  digitalWrite(pin_vcc_ib, HIGH); // for ib sensor vcc
+  digitalWrite(pin_relay_bat, LOW); // for relay
+
+  // configure timers
+  configure_timers();
+}
+
+
+
 void loop() {
+
+  takeinputs();
   if (debug_mode == 1) {
     serial_print();
   }
@@ -369,9 +377,8 @@ void loop() {
     soft_start();
   }
 
-  takeinputs();
-
   mppt_mode_selector();
+  
   if (mppt_mode == 1) {
     mppt_func();
   }
