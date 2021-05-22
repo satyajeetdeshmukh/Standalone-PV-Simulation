@@ -34,9 +34,9 @@ Plecs {
   ExtendedMatrixPrecision "1"
   MatrixSignificanceCheck "2"
   Schematic {
-    Location      [0, 23; 1920, 999]
+    Location      [0, 38; 1920, 1014]
     ZoomFactor    1
-    SliderPosition [44, 23]
+    SliderPosition [27, 168]
     ShowBrowser   off
     BrowserWidth  143
     Component {
@@ -104,82 +104,13 @@ Plecs {
       Flipped       off
       Parameter {
         Variable      "L"
-        Value         "0.005"
+        Value         "0.001"
         Show          on
       }
       Parameter {
         Variable      "i_init"
         Value         "0"
         Show          off
-      }
-    }
-    Component {
-      Type          Scope
-      Name          "Gate pulse"
-      Show          on
-      Position      [1405, 630]
-      Direction     up
-      Flipped       off
-      Location      [0, 31; 1920, 1028]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAB4AAAAPKAAAA"
-"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
-"AAAAA=="
-      SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"QAAAGQAAAAIAAAAZAAAAAcAAABkAAAABgAAAGQAAAAFAAAAZAAAAAQAAABkAAAAAwAAAGQAAAACAA"
-"AAZAAAAAEAAABkAAAAyQAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAMAAACmAAA"
-"AAQAAAAAAAAAAAAAACQAAAAAAAAAjAAAAAQAAAAA="
-      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
-"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
-      Axes          "2"
-      TimeRange     "0.0"
-      SingleTimeAxis "1"
-      Open          "0"
-      Ts            "-1"
-      SampleLimit   "0"
-      XAxisLabel    ""
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-      }
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-      }
-      Fourier {
-        SingleXAxis   on
-        AxisLabel     "Frequency"
-        Scaling       0
-        PhaseDisplay  0
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-        }
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-        }
       }
     }
     Component {
@@ -544,189 +475,6 @@ Plecs {
       Flipped       off
     }
     Component {
-      Type          Scope
-      Name          "Scope6"
-      Show          on
-      Position      [680, 815]
-      Direction     up
-      Flipped       off
-      Location      [0, 60; 1920, 1057]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAB4AAAAPKAAAA"
-"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
-"AAAAA=="
-      SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"QAAAGQAAAAIAAAAZAAAAAcAAABkAAAABgAAAGQAAAAFAAAAZAAAAAQAAABkAAAAAwAAAGQAAAACAA"
-"AAZAAAAAEAAABkAAAAfwAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAMAAABcAAA"
-"AAQAAAAAAAAAAAAAACQAAAAAAAAAjAAAAAQAAAAA="
-      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
-"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
-      Axes          "2"
-      TimeRange     "0.0"
-      SingleTimeAxis "1"
-      Open          "0"
-      Ts            "-1"
-      SampleLimit   "0"
-      XAxisLabel    ""
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-      }
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-      }
-      Fourier {
-        SingleXAxis   on
-        AxisLabel     "Frequency"
-        Scaling       0
-        PhaseDisplay  0
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-        }
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-        }
-      }
-    }
-    Component {
-      Type          Sum
-      Name          "Subtract2"
-      Show          off
-      Position      [580, 595]
-      Direction     right
-      Flipped       off
-      Parameter {
-        Variable      "IconShape"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "Inputs"
-        Value         "+-"
-        Show          off
-      }
-    }
-    Component {
-      Type          Constant
-      Name          "ki1"
-      Show          on
-      Position      [405, 550]
-      Direction     right
-      Flipped       off
-      Frame         [-20, -10; 20, 10]
-      LabelPosition [0, 13]
-      LabelAlign    up
-      Parameter {
-        Variable      "Value"
-        Value         "0.98"
-        Show          off
-      }
-    }
-    Component {
-      Type          TriangleGenerator
-      Name          "Triangular Wave"
-      Show          on
-      Position      [815, 800]
-      Direction     right
-      Flipped       off
-      Parameter {
-        Variable      "Min"
-        Value         "0"
-        Show          off
-      }
-      Parameter {
-        Variable      "Max"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "f"
-        Value         "20000"
-        Show          off
-      }
-      Parameter {
-        Variable      "DutyCycle"
-        Value         "0.5"
-        Show          off
-      }
-      Parameter {
-        Variable      "Delay"
-        Value         "0"
-        Show          off
-      }
-    }
-    Component {
-      Type          RelationalOperator
-      Name          "Relational\nOperator"
-      Show          on
-      Position      [850, 720]
-      Direction     right
-      Flipped       off
-      Parameter {
-        Variable      "Operator"
-        Value         "5"
-        Show          off
-      }
-    }
-    Component {
-      Type          Sum
-      Name          "Subtract3"
-      Show          off
-      Position      [935, 820]
-      Direction     right
-      Flipped       off
-      Parameter {
-        Variable      "IconShape"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "Inputs"
-        Value         "+-"
-        Show          off
-      }
-    }
-    Component {
-      Type          Constant
-      Name          "ki2"
-      Show          on
-      Position      [855, 855]
-      Direction     right
-      Flipped       off
-      Frame         [-20, -10; 20, 10]
-      LabelPosition [0, 13]
-      LabelAlign    up
-      Parameter {
-        Variable      "Value"
-        Value         "1"
-        Show          off
-      }
-    }
-    Component {
       Type          Ammeter
       Name          "Am2"
       Show          on
@@ -864,19 +612,6 @@ Plecs {
       }
     }
     Component {
-      Type          Resistor
-      Name          "R2"
-      Show          on
-      Position      [720, 420]
-      Direction     up
-      Flipped       off
-      Parameter {
-        Variable      "R"
-        Value         "0.001"
-        Show          off
-      }
-    }
-    Component {
       Type          Constant
       Name          "ki"
       Show          on
@@ -890,270 +625,6 @@ Plecs {
         Variable      "Value"
         Value         "0.05"
         Show          off
-      }
-    }
-    Component {
-      Type          RelationalOperator
-      Name          "Relational\nOperator1"
-      Show          on
-      Position      [1135, 815]
-      Direction     right
-      Flipped       off
-      Parameter {
-        Variable      "Operator"
-        Value         "5"
-        Show          off
-      }
-    }
-    Component {
-      Type          Subsystem
-      Name          "Sub"
-      Show          on
-      Position      [1050, 925]
-      Direction     up
-      Flipped       off
-      Frame         [-20, -20; 20, 20]
-      LabelPosition [0, 0]
-      SampleTime    "-1"
-      MaskIconFrame on
-      MaskIconOpaque off
-      MaskIconRotates on
-      Terminal {
-        Type          Output
-        Position      [24, 0]
-        Direction     right
-      }
-      Terminal {
-        Type          Input
-        Position      [-20, 0]
-        Direction     left
-      }
-      Schematic {
-        Location      [488, 355; 1024, 616]
-        ZoomFactor    1
-        SliderPosition [0, 0]
-        ShowBrowser   off
-        BrowserWidth  100
-        Component {
-          Type          RelationalOperator
-          Name          "Relational\nOperator2"
-          Show          on
-          Position      [165, 135]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Operator"
-            Value         "5"
-            Show          off
-          }
-        }
-        Component {
-          Type          Constant
-          Name          "ki3"
-          Show          on
-          Position      [75, 165]
-          Direction     right
-          Flipped       off
-          Frame         [-20, -10; 20, 10]
-          LabelPosition [0, 13]
-          LabelAlign    up
-          Parameter {
-            Variable      "Value"
-            Value         "0.9"
-            Show          off
-          }
-        }
-        Component {
-          Type          LogicalOperator
-          Name          "Logical\nOperator"
-          Show          on
-          Position      [275, 200]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Operator"
-            Value         "6"
-            Show          off
-          }
-          Parameter {
-            Variable      "Inputs"
-            Value         "1"
-            Show          off
-          }
-        }
-        Component {
-          Type          Product
-          Name          "Product4"
-          Show          on
-          Position      [370, 85]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Inputs"
-            Value         "2"
-            Show          off
-          }
-        }
-        Component {
-          Type          Product
-          Name          "Product5"
-          Show          on
-          Position      [375, 195]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Inputs"
-            Value         "2"
-            Show          off
-          }
-        }
-        Component {
-          Type          Constant
-          Name          "ki4"
-          Show          on
-          Position      [290, 65]
-          Direction     right
-          Flipped       off
-          Frame         [-20, -10; 20, 10]
-          LabelPosition [0, 13]
-          LabelAlign    up
-          Parameter {
-            Variable      "Value"
-            Value         "0.9"
-            Show          off
-          }
-        }
-        Component {
-          Type          Sum
-          Name          "Sum1"
-          Show          off
-          Position      [470, 140]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "IconShape"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "Inputs"
-            Value         "++"
-            Show          off
-          }
-        }
-        Component {
-          Type          Output
-          Name          "1"
-          Show          on
-          Position      [520, 140]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Index"
-            Value         "1"
-            Show          on
-          }
-          Parameter {
-            Variable      "Width"
-            Value         "-1"
-            Show          off
-          }
-        }
-        Component {
-          Type          Input
-          Name          "2"
-          Show          on
-          Position      [65, 130]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Index"
-            Value         "2"
-            Show          on
-          }
-          Parameter {
-            Variable      "Width"
-            Value         "-1"
-            Show          off
-          }
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "ki3"
-          SrcTerminal   1
-          Points        [115, 165; 115, 140]
-          DstComponent  "Relational\nOperator2"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Relational\nOperator2"
-          SrcTerminal   3
-          Points        [215, 135]
-          Branch {
-            Points        [220, 135; 220, 200]
-            DstComponent  "Logical\nOperator"
-            DstTerminal   2
-          }
-          Branch {
-            Points        [215, 90]
-            DstComponent  "Product4"
-            DstTerminal   3
-          }
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Logical\nOperator"
-          SrcTerminal   1
-          DstComponent  "Product5"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Product4"
-          SrcTerminal   1
-          Points        [435, 85; 435, 125; 430, 125; 430, 135]
-          DstComponent  "Sum1"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "ki4"
-          SrcTerminal   1
-          Points        [330, 65; 330, 80]
-          DstComponent  "Product4"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Product5"
-          SrcTerminal   1
-          Points        [440, 195; 440, 160; 430, 160; 430, 145]
-          DstComponent  "Sum1"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Sum1"
-          SrcTerminal   1
-          DstComponent  "1"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "2"
-          SrcTerminal   1
-          Points        [125, 130]
-          Branch {
-            DstComponent  "Relational\nOperator2"
-            DstTerminal   1
-          }
-          Branch {
-            Points        [125, 180; 345, 180]
-            DstComponent  "Product5"
-            DstTerminal   2
-          }
-        }
       }
     }
     Component {
@@ -1524,440 +995,6 @@ Plecs {
       }
     }
     Component {
-      Type          Scope
-      Name          "Scope5"
-      Show          on
-      Position      [560, 885]
-      Direction     up
-      Flipped       off
-      Location      [488, 355; 838, 582]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAAV4AAADIAAAA"
-"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
-"AAAAA=="
-      SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"QAAAGQAAAAIAAAAZAAAAAcAAABkAAAABgAAAGQAAAAFAAAAZAAAAAQAAABkAAAAAwAAAGQAAAACAA"
-"AAZAAAAAEAAABkAAAAlAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAMAAABxAAA"
-"AAQAAAAAAAAAAAAAACQAAAAAAAAAjAAAAAQAAAAA="
-      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-      Axes          "1"
-      TimeRange     "0.0"
-      SingleTimeAxis "1"
-      Open          "0"
-      Ts            "-1"
-      SampleLimit   "0"
-      XAxisLabel    ""
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-      }
-      Fourier {
-        SingleXAxis   on
-        AxisLabel     "Frequency"
-        Scaling       0
-        PhaseDisplay  0
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-        }
-      }
-    }
-    Component {
-      Type          Subsystem
-      Name          "Sub2"
-      Show          on
-      Position      [1010, 705]
-      Direction     up
-      Flipped       off
-      Frame         [-35, -20; 35, 20]
-      LabelPosition [0, 0]
-      SampleTime    "-1"
-      MaskIconFrame on
-      MaskIconOpaque off
-      MaskIconRotates on
-      Terminal {
-        Type          Output
-        Position      [39, 0]
-        Direction     right
-      }
-      Terminal {
-        Type          Input
-        Position      [15, 20]
-        Direction     down
-      }
-      Terminal {
-        Type          Input
-        Position      [-35, 0]
-        Direction     left
-      }
-      Schematic {
-        Location      [987, 349; 1390, 510]
-        ZoomFactor    1
-        SliderPosition [729, 105]
-        ShowBrowser   off
-        BrowserWidth  100
-        Component {
-          Type          Sum
-          Name          "Subtract4"
-          Show          off
-          Position      [150, 75]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "IconShape"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "Inputs"
-            Value         "+++"
-            Show          off
-          }
-        }
-        Component {
-          Type          Constant
-          Name          "ki3"
-          Show          on
-          Position      [75, 85]
-          Direction     right
-          Flipped       off
-          Frame         [-20, -10; 20, 10]
-          LabelPosition [0, 13]
-          LabelAlign    up
-          Parameter {
-            Variable      "Value"
-            Value         "0.02"
-            Show          off
-          }
-        }
-        Component {
-          Type          RelationalOperator
-          Name          "Relational\nOperator3"
-          Show          on
-          Position      [270, 90]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Operator"
-            Value         "5"
-            Show          off
-          }
-        }
-        Component {
-          Type          Constant
-          Name          "1"
-          Show          on
-          Position      [200, 100]
-          Direction     right
-          Flipped       off
-          Frame         [-20, -10; 20, 10]
-          LabelPosition [0, 13]
-          LabelAlign    up
-          Parameter {
-            Variable      "Value"
-            Value         "1"
-            Show          off
-          }
-        }
-        Component {
-          Type          LogicalOperator
-          Name          "Logical\nOperator"
-          Show          on
-          Position      [385, 175]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Operator"
-            Value         "6"
-            Show          off
-          }
-          Parameter {
-            Variable      "Inputs"
-            Value         "1"
-            Show          off
-          }
-        }
-        Component {
-          Type          Output
-          Name          "out"
-          Show          on
-          Position      [1095, 165]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Index"
-            Value         "1"
-            Show          on
-          }
-          Parameter {
-            Variable      "Width"
-            Value         "-1"
-            Show          off
-          }
-        }
-        Component {
-          Type          Input
-          Name          "ls"
-          Show          on
-          Position      [30, 25]
-          Direction     up
-          Flipped       off
-          Parameter {
-            Variable      "Index"
-            Value         "2"
-            Show          on
-          }
-          Parameter {
-            Variable      "Width"
-            Value         "-1"
-            Show          off
-          }
-        }
-        Component {
-          Type          Input
-          Name          "hs"
-          Show          on
-          Position      [30, 65]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Index"
-            Value         "3"
-            Show          on
-          }
-          Parameter {
-            Variable      "Width"
-            Value         "-1"
-            Show          off
-          }
-        }
-        Component {
-          Type          Product
-          Name          "Product"
-          Show          on
-          Position      [555, 165]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Inputs"
-            Value         "2"
-            Show          off
-          }
-        }
-        Component {
-          Type          Product
-          Name          "Product1"
-          Show          on
-          Position      [545, 95]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "Inputs"
-            Value         "2"
-            Show          off
-          }
-        }
-        Component {
-          Type          Sum
-          Name          "Subtract"
-          Show          off
-          Position      [530, 50]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "IconShape"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "Inputs"
-            Value         "+-"
-            Show          off
-          }
-        }
-        Component {
-          Type          Constant
-          Name          "ki4"
-          Show          on
-          Position      [425, 35]
-          Direction     right
-          Flipped       off
-          Frame         [-20, -10; 20, 10]
-          LabelPosition [0, 13]
-          LabelAlign    up
-          Parameter {
-            Variable      "Value"
-            Value         "0.98"
-            Show          off
-          }
-        }
-        Component {
-          Type          Sum
-          Name          "Subtract1"
-          Show          off
-          Position      [885, 155]
-          Direction     right
-          Flipped       off
-          Parameter {
-            Variable      "IconShape"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "Inputs"
-            Value         "++"
-            Show          off
-          }
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Subtract4"
-          SrcTerminal   1
-          Points        [170, 85]
-          DstComponent  "Relational\nOperator3"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "ki3"
-          SrcTerminal   1
-          DstComponent  "Subtract4"
-          DstTerminal   4
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "1"
-          SrcTerminal   1
-          Points        [230, 100; 230, 95]
-          DstComponent  "Relational\nOperator3"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Logical\nOperator"
-          SrcTerminal   1
-          Points        [525, 175]
-          DstComponent  "Product"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Relational\nOperator3"
-          SrcTerminal   3
-          Points        [290, 95; 300, 95; 300, 100]
-          Branch {
-            Points        [300, 175]
-            DstComponent  "Logical\nOperator"
-            DstTerminal   2
-          }
-          Branch {
-            DstComponent  "Product1"
-            DstTerminal   3
-          }
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "ls"
-          SrcTerminal   1
-          Points        [100, 5; 100, 75]
-          Branch {
-            DstComponent  "Subtract4"
-            DstTerminal   3
-          }
-          Branch {
-            Points        [100, 275; 645, 275; 645, 135; 525, 135]
-            DstComponent  "Product"
-            DstTerminal   2
-          }
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "hs"
-          SrcTerminal   1
-          Points        [80, 65]
-          Branch {
-            DstComponent  "Subtract4"
-            DstTerminal   2
-          }
-          Branch {
-            Points        [80, 55]
-            DstComponent  "Subtract"
-            DstTerminal   3
-          }
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "ki4"
-          SrcTerminal   1
-          Points        [500, 35]
-          DstComponent  "Subtract"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Subtract"
-          SrcTerminal   1
-          Points        [550, 65; 515, 65]
-          DstComponent  "Product1"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Product"
-          SrcTerminal   1
-          Points        [575, 160]
-          DstComponent  "Subtract1"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Product1"
-          SrcTerminal   1
-          Points        [825, 95; 825, 150]
-          DstComponent  "Subtract1"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Subtract1"
-          SrcTerminal   1
-          Points        [985, 155; 985, 165]
-          DstComponent  "out"
-          DstTerminal   1
-        }
-      }
-    }
-    Component {
-      Type          Capacitor
-      Name          "C4"
-      Show          on
-      Position      [805, 435]
-      Direction     down
-      Flipped       on
-      Parameter {
-        Variable      "C"
-        Value         "220e-6"
-        Show          on
-      }
-      Parameter {
-        Variable      "v_init"
-        Value         "8.8"
-        Show          off
-      }
-    }
-    Component {
       Type          Product
       Name          "Product2"
       Show          on
@@ -2092,168 +1129,6 @@ Plecs {
       Parameter {
         Variable      "Value"
         Value         "15"
-        Show          off
-      }
-    }
-    Component {
-      Type          Scope
-      Name          "Scope8"
-      Show          on
-      Position      [560, 135]
-      Direction     up
-      Flipped       off
-      Location      [0, 31; 1920, 1028]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAB4AAAAPKAAAA"
-"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
-"AAAAA=="
-      SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"QAAAGQAAAAIAAAAZAAAAAcAAABkAAAABgAAAGQAAAAFAAAAZAAAAAQAAABkAAAAAwAAAGQAAAACAA"
-"AAZAAAAAEAAABkAAAAlAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAMAAABxAAA"
-"AAQAAAAAAAAAAAAAACQAAAAAAAAAjAAAAAQAAAAA="
-      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
-"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
-      Axes          "2"
-      TimeRange     "0.0"
-      SingleTimeAxis "1"
-      Open          "0"
-      Ts            "-1"
-      SampleLimit   "0"
-      XAxisLabel    ""
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-      }
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-      }
-      Fourier {
-        SingleXAxis   on
-        AxisLabel     "Frequency"
-        Scaling       0
-        PhaseDisplay  0
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-        }
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-        }
-      }
-    }
-    Component {
-      Type          CScript
-      Name          "LINEAR FOLLOWER"
-      Show          on
-      Position      [890, 950]
-      Direction     right
-      Flipped       off
-      Parameter {
-        Variable      "NumInputs"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "NumOutputs"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "NumContStates"
-        Value         "0"
-        Show          off
-      }
-      Parameter {
-        Variable      "NumDiscStates"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "NumZCSignals"
-        Value         "0"
-        Show          off
-      }
-      Parameter {
-        Variable      "DirectFeedthrough"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "Ts"
-        Value         "1/2000"
-        Show          off
-      }
-      Parameter {
-        Variable      "Parameters"
-        Value         ""
-        Show          off
-      }
-      Parameter {
-        Variable      "LangStandard"
-        Value         "2"
-        Show          off
-      }
-      Parameter {
-        Variable      "RuntimeCheck"
-        Value         "2"
-        Show          off
-      }
-      Parameter {
-        Variable      "Declarations"
-        Value         "#define duty_hs Input(0)\n#define delta 0.00004\n#defin"
-"e last_output DiscState(0)"
-        Show          off
-      }
-      Parameter {
-        Variable      "StartFcn"
-        Value         "last_output=0;"
-        Show          off
-      }
-      Parameter {
-        Variable      "OutputFcn"
-        Value         "float out=0;\nif (duty_hs>last_output){\n\tout=last_out"
-"put+delta;\n}\nelse if (duty_hs<last_output){\n\tout=last_output-delta;\n}\ne"
-"lse{\n\tout = last_output;\n}\n\nif(0<=out<=1){\n\tOutput(0) = out;\n\tlast_o"
-"utput = out;\n}\nelse if(0>out){\n\tOutput(0) = 0;\n\tlast_output = 0;\n}\nel"
-"se {\n\tOutput(0) = 1;\n\tlast_output = 1;\n}\n\nlast_output = out;"
-        Show          off
-      }
-      Parameter {
-        Variable      "UpdateFcn"
-        Value         ""
-        Show          off
-      }
-      Parameter {
-        Variable      "DerivativeFcn"
-        Value         ""
-        Show          off
-      }
-      Parameter {
-        Variable      "TerminateFcn"
-        Value         ""
         Show          off
       }
     }
@@ -2659,6 +1534,1117 @@ Plecs {
         }
       }
     }
+    Component {
+      Type          Subsystem
+      Name          "Sub4"
+      Show          on
+      Position      [930, 790]
+      Direction     up
+      Flipped       off
+      Frame         [-125, -30; 125, 30]
+      LabelPosition [0, 0]
+      SampleTime    "-1"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Terminal {
+        Type          Input
+        Position      [-115, -30]
+        Direction     up
+      }
+      Terminal {
+        Type          Output
+        Position      [-105, -34]
+        Direction     up
+      }
+      Terminal {
+        Type          Output
+        Position      [-95, -34]
+        Direction     up
+      }
+      Schematic {
+        Location      [489, 362; 1509, 897]
+        ZoomFactor    1
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Scope
+          Name          "Scope6"
+          Show          on
+          Position      [320, 310]
+          Direction     up
+          Flipped       off
+          Location      [0, 0; 0, 0]
+          State         ""
+          SavedViews    ""
+          HeaderState   ""
+          PlotPalettes  ""
+          Axes          "2"
+          TimeRange     "0.0"
+          SingleTimeAxis "1"
+          Open          "0"
+          Ts            "-1"
+          SampleLimit   "0"
+          XAxisLabel    ""
+          Axis {
+            Name          ""
+            AutoScale     1
+            MinValue      0
+            MaxValue      1
+            Signals       {}
+            SignalTypes   [ ]
+            Untangle      0
+          }
+          Axis {
+            Name          ""
+            AutoScale     1
+            MinValue      0
+            MaxValue      1
+            Signals       {}
+            SignalTypes   [ ]
+            Untangle      0
+          }
+          Fourier {
+            SingleXAxis   on
+            AxisLabel     "Frequency"
+            Scaling       0
+            PhaseDisplay  0
+            Axis {
+              Name          ""
+              AutoScale     1
+              MinValue      0
+              MaxValue      1
+              Signals       {}
+              Untangle      0
+            }
+            Axis {
+              Name          ""
+              AutoScale     1
+              MinValue      0
+              MaxValue      1
+              Signals       {}
+              Untangle      0
+            }
+          }
+        }
+        Component {
+          Type          Sum
+          Name          "Subtract2"
+          Show          off
+          Position      [235, 150]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "IconShape"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "+-"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "ki1"
+          Show          on
+          Position      [135, 160]
+          Direction     right
+          Flipped       off
+          Frame         [-20, -10; 20, 10]
+          LabelPosition [0, 13]
+          LabelAlign    up
+          Parameter {
+            Variable      "Value"
+            Value         "0.98"
+            Show          off
+          }
+        }
+        Component {
+          Type          TriangleGenerator
+          Name          "Triangular Wave"
+          Show          on
+          Position      [410, 295]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Min"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "Max"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "f"
+            Value         "20000"
+            Show          off
+          }
+          Parameter {
+            Variable      "DutyCycle"
+            Value         "0.5"
+            Show          off
+          }
+          Parameter {
+            Variable      "Delay"
+            Value         "0"
+            Show          off
+          }
+        }
+        Component {
+          Type          RelationalOperator
+          Name          "Relational\nOperator"
+          Show          on
+          Position      [490, 215]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Operator"
+            Value         "5"
+            Show          off
+          }
+        }
+        Component {
+          Type          Sum
+          Name          "Subtract3"
+          Show          off
+          Position      [575, 315]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "IconShape"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "+-"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "ki2"
+          Show          on
+          Position      [495, 350]
+          Direction     right
+          Flipped       off
+          Frame         [-20, -10; 20, 10]
+          LabelPosition [0, 13]
+          LabelAlign    up
+          Parameter {
+            Variable      "Value"
+            Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          RelationalOperator
+          Name          "Relational\nOperator1"
+          Show          on
+          Position      [775, 310]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Operator"
+            Value         "5"
+            Show          off
+          }
+        }
+        Component {
+          Type          Subsystem
+          Name          "Sub"
+          Show          on
+          Position      [690, 420]
+          Direction     up
+          Flipped       off
+          Frame         [-20, -20; 20, 20]
+          LabelPosition [0, 0]
+          SampleTime    "-1"
+          MaskIconFrame on
+          MaskIconOpaque off
+          MaskIconRotates on
+          Terminal {
+            Type          Output
+            Position      [24, 0]
+            Direction     right
+          }
+          Terminal {
+            Type          Input
+            Position      [-20, 0]
+            Direction     left
+          }
+          Schematic {
+            Location      [488, 355; 1024, 616]
+            ZoomFactor    1
+            SliderPosition [0, 0]
+            ShowBrowser   off
+            BrowserWidth  100
+            Component {
+              Type          RelationalOperator
+              Name          "Relational\nOperator2"
+              Show          on
+              Position      [165, 135]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Operator"
+                Value         "5"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "ki3"
+              Show          on
+              Position      [75, 165]
+              Direction     right
+              Flipped       off
+              Frame         [-20, -10; 20, 10]
+              LabelPosition [0, 13]
+              LabelAlign    up
+              Parameter {
+                Variable      "Value"
+                Value         "0.9"
+                Show          off
+              }
+            }
+            Component {
+              Type          LogicalOperator
+              Name          "Logical\nOperator"
+              Show          on
+              Position      [275, 200]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Operator"
+                Value         "6"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product4"
+              Show          on
+              Position      [370, 85]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Inputs"
+                Value         "2"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product5"
+              Show          on
+              Position      [375, 195]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Inputs"
+                Value         "2"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "ki4"
+              Show          on
+              Position      [290, 65]
+              Direction     right
+              Flipped       off
+              Frame         [-20, -10; 20, 10]
+              LabelPosition [0, 13]
+              LabelAlign    up
+              Parameter {
+                Variable      "Value"
+                Value         "0.9"
+                Show          off
+              }
+            }
+            Component {
+              Type          Sum
+              Name          "Sum1"
+              Show          off
+              Position      [470, 140]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "++"
+                Show          off
+              }
+            }
+            Component {
+              Type          Output
+              Name          "1"
+              Show          on
+              Position      [520, 140]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Index"
+                Value         "1"
+                Show          on
+              }
+              Parameter {
+                Variable      "Width"
+                Value         "-1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Input
+              Name          "2"
+              Show          on
+              Position      [65, 130]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Index"
+                Value         "2"
+                Show          on
+              }
+              Parameter {
+                Variable      "Width"
+                Value         "-1"
+                Show          off
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "ki3"
+              SrcTerminal   1
+              Points        [115, 165; 115, 140]
+              DstComponent  "Relational\nOperator2"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Relational\nOperator2"
+              SrcTerminal   3
+              Points        [215, 135]
+              Branch {
+                Points        [220, 135; 220, 200]
+                DstComponent  "Logical\nOperator"
+                DstTerminal   2
+              }
+              Branch {
+                Points        [215, 90]
+                DstComponent  "Product4"
+                DstTerminal   3
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Logical\nOperator"
+              SrcTerminal   1
+              DstComponent  "Product5"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product4"
+              SrcTerminal   1
+              Points        [435, 85; 435, 125; 430, 125; 430, 135]
+              DstComponent  "Sum1"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "ki4"
+              SrcTerminal   1
+              Points        [330, 65; 330, 80]
+              DstComponent  "Product4"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product5"
+              SrcTerminal   1
+              Points        [440, 195; 440, 160; 430, 160; 430, 145]
+              DstComponent  "Sum1"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Sum1"
+              SrcTerminal   1
+              DstComponent  "1"
+              DstTerminal   1
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "2"
+              SrcTerminal   1
+              Points        [125, 130]
+              Branch {
+                DstComponent  "Relational\nOperator2"
+                DstTerminal   1
+              }
+              Branch {
+                Points        [125, 180; 345, 180]
+                DstComponent  "Product5"
+                DstTerminal   2
+              }
+            }
+          }
+        }
+        Component {
+          Type          Subsystem
+          Name          "Sub2"
+          Show          on
+          Position      [650, 200]
+          Direction     up
+          Flipped       off
+          Frame         [-35, -20; 35, 20]
+          LabelPosition [0, 0]
+          SampleTime    "-1"
+          MaskIconFrame on
+          MaskIconOpaque off
+          MaskIconRotates on
+          Terminal {
+            Type          Output
+            Position      [39, 0]
+            Direction     right
+          }
+          Terminal {
+            Type          Input
+            Position      [15, 20]
+            Direction     down
+          }
+          Terminal {
+            Type          Input
+            Position      [-35, 0]
+            Direction     left
+          }
+          Schematic {
+            Location      [479, 349; 1794, 773]
+            ZoomFactor    1
+            SliderPosition [729, -21]
+            ShowBrowser   off
+            BrowserWidth  100
+            Component {
+              Type          Sum
+              Name          "Subtract4"
+              Show          off
+              Position      [150, 75]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "+++"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "ki3"
+              Show          on
+              Position      [75, 85]
+              Direction     right
+              Flipped       off
+              Frame         [-20, -10; 20, 10]
+              LabelPosition [0, 13]
+              LabelAlign    up
+              Parameter {
+                Variable      "Value"
+                Value         "0.02"
+                Show          off
+              }
+            }
+            Component {
+              Type          RelationalOperator
+              Name          "Relational\nOperator3"
+              Show          on
+              Position      [270, 90]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Operator"
+                Value         "5"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "1"
+              Show          on
+              Position      [200, 100]
+              Direction     right
+              Flipped       off
+              Frame         [-20, -10; 20, 10]
+              LabelPosition [0, 13]
+              LabelAlign    up
+              Parameter {
+                Variable      "Value"
+                Value         "1"
+                Show          off
+              }
+            }
+            Component {
+              Type          LogicalOperator
+              Name          "Logical\nOperator"
+              Show          on
+              Position      [385, 175]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Operator"
+                Value         "6"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Output
+              Name          "out"
+              Show          on
+              Position      [1095, 165]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Index"
+                Value         "1"
+                Show          on
+              }
+              Parameter {
+                Variable      "Width"
+                Value         "-1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Input
+              Name          "ls"
+              Show          on
+              Position      [30, 25]
+              Direction     up
+              Flipped       off
+              Parameter {
+                Variable      "Index"
+                Value         "2"
+                Show          on
+              }
+              Parameter {
+                Variable      "Width"
+                Value         "-1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Input
+              Name          "hs"
+              Show          on
+              Position      [30, 65]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Index"
+                Value         "3"
+                Show          on
+              }
+              Parameter {
+                Variable      "Width"
+                Value         "-1"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product"
+              Show          on
+              Position      [555, 165]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Inputs"
+                Value         "2"
+                Show          off
+              }
+            }
+            Component {
+              Type          Product
+              Name          "Product1"
+              Show          on
+              Position      [545, 95]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "Inputs"
+                Value         "2"
+                Show          off
+              }
+            }
+            Component {
+              Type          Sum
+              Name          "Subtract"
+              Show          off
+              Position      [530, 50]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "+-"
+                Show          off
+              }
+            }
+            Component {
+              Type          Constant
+              Name          "ki4"
+              Show          on
+              Position      [425, 35]
+              Direction     right
+              Flipped       off
+              Frame         [-20, -10; 20, 10]
+              LabelPosition [0, 13]
+              LabelAlign    up
+              Parameter {
+                Variable      "Value"
+                Value         "0.98"
+                Show          off
+              }
+            }
+            Component {
+              Type          Sum
+              Name          "Subtract1"
+              Show          off
+              Position      [885, 155]
+              Direction     right
+              Flipped       off
+              Parameter {
+                Variable      "IconShape"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "Inputs"
+                Value         "++"
+                Show          off
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Subtract4"
+              SrcTerminal   1
+              Points        [170, 85]
+              DstComponent  "Relational\nOperator3"
+              DstTerminal   1
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "ki3"
+              SrcTerminal   1
+              DstComponent  "Subtract4"
+              DstTerminal   4
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "1"
+              SrcTerminal   1
+              Points        [230, 100; 230, 95]
+              DstComponent  "Relational\nOperator3"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Logical\nOperator"
+              SrcTerminal   1
+              Points        [525, 175]
+              DstComponent  "Product"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Relational\nOperator3"
+              SrcTerminal   3
+              Points        [290, 95; 300, 95; 300, 100]
+              Branch {
+                Points        [300, 175]
+                DstComponent  "Logical\nOperator"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "Product1"
+                DstTerminal   3
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "ls"
+              SrcTerminal   1
+              Points        [100, 5; 100, 75]
+              Branch {
+                DstComponent  "Subtract4"
+                DstTerminal   3
+              }
+              Branch {
+                Points        [100, 275; 645, 275; 645, 135; 525, 135]
+                DstComponent  "Product"
+                DstTerminal   2
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "hs"
+              SrcTerminal   1
+              Points        [80, 65]
+              Branch {
+                DstComponent  "Subtract4"
+                DstTerminal   2
+              }
+              Branch {
+                Points        [80, 55]
+                DstComponent  "Subtract"
+                DstTerminal   3
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "ki4"
+              SrcTerminal   1
+              Points        [500, 35]
+              DstComponent  "Subtract"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Subtract"
+              SrcTerminal   1
+              Points        [550, 65; 515, 65]
+              DstComponent  "Product1"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product"
+              SrcTerminal   1
+              Points        [575, 160]
+              DstComponent  "Subtract1"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Product1"
+              SrcTerminal   1
+              Points        [825, 95; 825, 150]
+              DstComponent  "Subtract1"
+              DstTerminal   2
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Subtract1"
+              SrcTerminal   1
+              Points        [985, 155; 985, 165]
+              DstComponent  "out"
+              DstTerminal   1
+            }
+          }
+        }
+        Component {
+          Type          CScript
+          Name          "LINEAR FOLLOWER"
+          Show          on
+          Position      [530, 445]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "NumInputs"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumOutputs"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumContStates"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumDiscStates"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumZCSignals"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "DirectFeedthrough"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ts"
+            Value         "1/2000"
+            Show          off
+          }
+          Parameter {
+            Variable      "Parameters"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "LangStandard"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "RuntimeCheck"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "Declarations"
+            Value         "#define duty_hs Input(0)\n#define delta 0.00004\n#d"
+"efine last_output DiscState(0)"
+            Show          off
+          }
+          Parameter {
+            Variable      "StartFcn"
+            Value         "last_output=0;"
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputFcn"
+            Value         "float out=0;\nif (duty_hs>last_output){\n\tout=last"
+"_output+delta;\n}\nelse if (duty_hs<last_output){\n\tout=last_output-delta;\n"
+"}\nelse{\n\tout = last_output;\n}\n\nif(0<=out<=1){\n\tOutput(0) = out;\n\tla"
+"st_output = out;\n}\nelse if(0>out){\n\tOutput(0) = 0;\n\tlast_output = 0;\n}"
+"\nelse {\n\tOutput(0) = 1;\n\tlast_output = 1;\n}\n\nlast_output = out;"
+            Show          off
+          }
+          Parameter {
+            Variable      "UpdateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "DerivativeFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "TerminateFcn"
+            Value         ""
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "duty_hs"
+          Show          on
+          Position      [315, 30]
+          Direction     up
+          Flipped       on
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "pwm_hs"
+          Show          on
+          Position      [745, 20]
+          Direction     up
+          Flipped       off
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "pwm_ls"
+          Show          on
+          Position      [845, 20]
+          Direction     up
+          Flipped       off
+          Parameter {
+            Variable      "Index"
+            Value         "3"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Subtract2"
+          SrcTerminal   1
+          Points        [255, 210; 225, 210; 225, 240; 220, 240; 220, 270; 240, 270; 240, 445]
+          DstComponent  "LINEAR FOLLOWER"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "ki1"
+          SrcTerminal   1
+          Points        [160, 145]
+          DstComponent  "Subtract2"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Triangular Wave"
+          SrcTerminal   1
+          Points        [475, 295; 475, 290]
+          Branch {
+            Points        [475, 260; 460, 260]
+            DstComponent  "Relational\nOperator"
+            DstTerminal   2
+          }
+          Branch {
+            Points        [510, 290; 510, 320]
+            DstComponent  "Subtract3"
+            DstTerminal   3
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Subtract3"
+          SrcTerminal   1
+          DstComponent  "Relational\nOperator1"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "ki2"
+          SrcTerminal   1
+          Points        [555, 350; 555, 325; 545, 325]
+          DstComponent  "Subtract3"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sub2"
+          SrcTerminal   1
+          Points        [720, 200; 720, 305]
+          DstComponent  "Relational\nOperator1"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sub"
+          SrcTerminal   1
+          Points        [745, 420; 745, 385; 740, 385]
+          Branch {
+            Points        [290, 385]
+            DstComponent  "Scope6"
+            DstTerminal   2
+          }
+          Branch {
+            Points        [740, 345; 600, 345; 600, 235]
+            DstComponent  "Sub2"
+            DstTerminal   2
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "LINEAR FOLLOWER"
+          SrcTerminal   2
+          Points        [630, 445; 630, 420]
+          DstComponent  "Sub"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "duty_hs"
+          SrcTerminal   1
+          Points        [315, 50; 315, 90; 315, 90]
+          Branch {
+            Points        [315, 180]
+            Branch {
+              Points        [460, 180; 460, 200]
+              Branch {
+                DstComponent  "Relational\nOperator"
+                DstTerminal   1
+              }
+              Branch {
+                DstComponent  "Sub2"
+                DstTerminal   3
+              }
+            }
+            Branch {
+              Points        [290, 180]
+              DstComponent  "Scope6"
+              DstTerminal   1
+            }
+          }
+          Branch {
+            Points        [180, 90; 180, 155]
+            DstComponent  "Subtract2"
+            DstTerminal   3
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Relational\nOperator"
+          SrcTerminal   3
+          Points        [510, 215; 555, 215; 555, 140; 745, 140; 745, 50]
+          DstComponent  "pwm_hs"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Relational\nOperator1"
+          SrcTerminal   3
+          Points        [795, 310; 910, 310; 910, 130; 845, 130; 845, 50]
+          DstComponent  "pwm_ls"
+          DstTerminal   1
+        }
+      }
+    }
     Connection {
       Type          Wire
       SrcComponent  "LOW DRIVE"
@@ -2667,16 +2653,9 @@ Plecs {
       Branch {
         Points        [845, 505]
         Branch {
-          Points        [805, 505]
-          Branch {
-            Points        [720, 505]
-            DstComponent  "V_dc1"
-            DstTerminal   2
-          }
-          Branch {
-            DstComponent  "C4"
-            DstTerminal   2
-          }
+          Points        [720, 505]
+          DstComponent  "V_dc1"
+          DstTerminal   2
         }
         Branch {
           DstComponent  "Vm1"
@@ -2686,36 +2665,27 @@ Plecs {
       Branch {
         Points        [1480, 505]
         Branch {
-          Points        [1525, 505]
+          Points        [1615, 505]
           Branch {
-            Points        [1615, 505]
+            DstComponent  "Vm2"
+            DstTerminal   2
+          }
+          Branch {
+            Points        [1730, 505]
             Branch {
-              DstComponent  "Vm2"
+              Points        [1840, 505]
+              DstComponent  "R1"
               DstTerminal   2
             }
             Branch {
-              Points        [1730, 505]
-              Branch {
-                Points        [1840, 505]
-                DstComponent  "R1"
-                DstTerminal   2
-              }
-              Branch {
-                DstComponent  "C3"
-                DstTerminal   2
-              }
+              DstComponent  "C3"
+              DstTerminal   2
             }
-          }
-          Branch {
-            Points        [1525, 460]
           }
         }
         Branch {
           DstComponent  "Ground"
           DstTerminal   1
-        }
-        Branch {
-          Points        [1480, 405]
         }
       }
     }
@@ -2765,34 +2735,23 @@ Plecs {
     }
     Connection {
       Type          Wire
-      Points        [1480, 385; 1480, 320]
+      SrcComponent  "Am6"
+      SrcTerminal   1
+      Points        [1730, 320]
       Branch {
-        Points        [1525, 320]
+        Points        [1615, 320]
         Branch {
-          Points        [1615, 320]
-          Branch {
-            Points        [1730, 320]
-            Branch {
-              DstComponent  "Am6"
-              DstTerminal   1
-            }
-            Branch {
-              DstComponent  "C3"
-              DstTerminal   1
-            }
-          }
-          Branch {
-            DstComponent  "Vm2"
-            DstTerminal   1
-          }
+          DstComponent  "Am2"
+          DstTerminal   2
         }
         Branch {
-          Points        [1525, 420]
+          DstComponent  "Vm2"
+          DstTerminal   1
         }
       }
       Branch {
-        DstComponent  "Am2"
-        DstTerminal   2
+        DstComponent  "C3"
+        DstTerminal   1
       }
     }
     Connection {
@@ -2826,38 +2785,6 @@ Plecs {
       Points        [1020, 390; 1020, 395]
       DstComponent  "L1"
       DstTerminal   1
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "ki1"
-      SrcTerminal   1
-      Points        [430, 590]
-      DstComponent  "Subtract2"
-      DstTerminal   2
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "ki2"
-      SrcTerminal   1
-      Points        [915, 855; 915, 830; 905, 830]
-      DstComponent  "Subtract3"
-      DstTerminal   2
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Triangular Wave"
-      SrcTerminal   1
-      Points        [835, 795]
-      Branch {
-        Points        [835, 765; 820, 765]
-        DstComponent  "Relational\nOperator"
-        DstTerminal   2
-      }
-      Branch {
-        Points        [870, 795; 870, 825]
-        DstComponent  "Subtract3"
-        DstTerminal   3
-      }
     }
     Connection {
       Type          Signal
@@ -2908,104 +2835,12 @@ Plecs {
       DstTerminal   1
     }
     Connection {
-      Type          Wire
-      SrcComponent  "Am1"
-      SrcTerminal   2
-      DstComponent  "R2"
-      DstTerminal   1
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Subtract3"
-      SrcTerminal   1
-      DstComponent  "Relational\nOperator1"
-      DstTerminal   2
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Relational\nOperator1"
-      SrcTerminal   3
-      Points        [1270, 815; 1270, 635]
-      Branch {
-        Points        [1205, 635]
-        DstComponent  "LOW DRIVE"
-        DstTerminal   3
-      }
-      Branch {
-        DstComponent  "Gate pulse"
-        DstTerminal   2
-      }
-    }
-    Connection {
       Type          Signal
       SrcComponent  "Subtract1"
       SrcTerminal   1
       Points        [675, 410]
       DstComponent  "Sub1"
       DstTerminal   2
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Relational\nOperator"
-      SrcTerminal   3
-      Points        [915, 720; 915, 645; 1105, 645; 1105, 625]
-      Branch {
-        Points        [1105, 350]
-        DstComponent  "HIGH DRIVE"
-        DstTerminal   3
-      }
-      Branch {
-        DstComponent  "Gate pulse"
-        DstTerminal   1
-      }
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "LINEAR FOLLOWER"
-      SrcTerminal   2
-      Points        [990, 950; 990, 925]
-      DstComponent  "Sub"
-      DstTerminal   2
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Sub"
-      SrcTerminal   1
-      Points        [1105, 925; 1105, 890; 1100, 890]
-      Branch {
-        Points        [650, 890]
-        DstComponent  "Scope6"
-        DstTerminal   2
-      }
-      Branch {
-        Points        [1100, 850; 960, 850; 960, 740]
-        DstComponent  "Sub2"
-        DstTerminal   2
-      }
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Sub2"
-      SrcTerminal   1
-      Points        [1080, 705; 1080, 810]
-      DstComponent  "Relational\nOperator1"
-      DstTerminal   1
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Subtract2"
-      SrcTerminal   1
-      Points        [600, 715; 585, 715; 585, 745; 580, 745; 580, 775; 600, 775]
-      Branch {
-        Points        [600, 950]
-        DstComponent  "LINEAR FOLLOWER"
-        DstTerminal   1
-      }
-      Branch {
-        Points        [530, 775]
-        DstComponent  "Scope5"
-        DstTerminal   1
-      }
     }
     Connection {
       Type          Signal
@@ -3018,17 +2853,9 @@ Plecs {
         DstTerminal   1
       }
       Branch {
-        Points        [645, 325]
-        Branch {
-          Points        [435, 325; 435, 275]
-          DstComponent  "Subtract"
-          DstTerminal   2
-        }
-        Branch {
-          Points        [645, 255; 675, 255; 675, 200; 530, 200]
-          DstComponent  "Scope8"
-          DstTerminal   2
-        }
+        Points        [435, 325; 435, 275]
+        DstComponent  "Subtract"
+        DstTerminal   2
       }
     }
     Connection {
@@ -3045,13 +2872,6 @@ Plecs {
         DstComponent  "Integrator"
         DstTerminal   1
       }
-    }
-    Connection {
-      Type          Wire
-      SrcComponent  "R2"
-      SrcTerminal   2
-      DstComponent  "V_dc1"
-      DstTerminal   1
     }
     Connection {
       Type          Signal
@@ -3143,50 +2963,13 @@ Plecs {
       SrcTerminal   1
       Points        [675, 525]
       Branch {
-        Points        [675, 545]
-        Branch {
-          Points        [675, 685]
-          Branch {
-            Points        [820, 685; 820, 705]
-            Branch {
-              DstComponent  "Relational\nOperator"
-              DstTerminal   1
-            }
-            Branch {
-              DstComponent  "Sub2"
-              DstTerminal   3
-            }
-          }
-          Branch {
-            Points        [650, 685]
-            DstComponent  "Scope6"
-            DstTerminal   1
-          }
-        }
-        Branch {
-          Points        [550, 545]
-          DstComponent  "Subtract2"
-          DstTerminal   3
-        }
+        Points        [815, 525]
+        DstComponent  "Sub4"
+        DstTerminal   1
       }
       Branch {
         Points        [210, 525]
         DstComponent  "Scope9"
-        DstTerminal   1
-      }
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Subtract4"
-      SrcTerminal   1
-      Points        [1885, 645; 1885, 800; 385, 800; 385, 265; 380, 265]
-      Branch {
-        DstComponent  "Subtract"
-        DstTerminal   3
-      }
-      Branch {
-        Points        [380, 130]
-        DstComponent  "Scope8"
         DstTerminal   1
       }
     }
@@ -3207,25 +2990,49 @@ Plecs {
     }
     Connection {
       Type          Wire
-      SrcComponent  "Am1"
+      SrcComponent  "Am3"
       SrcTerminal   1
-      Points        [805, 390]
+      Points        [845, 390]
       Branch {
-        Points        [845, 390]
-        Branch {
-          DstComponent  "Am3"
-          DstTerminal   1
-        }
-        Branch {
-          DstComponent  "Vm1"
-          DstTerminal   1
-        }
+        DstComponent  "Am1"
+        DstTerminal   1
       }
       Branch {
-        DstComponent  "C4"
+        DstComponent  "Vm1"
         DstTerminal   1
       }
     }
+    Connection {
+      Type          Wire
+      SrcComponent  "Am1"
+      SrcTerminal   2
+      DstComponent  "V_dc1"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Subtract4"
+      SrcTerminal   1
+      Points        [1885, 645; 1885, 90; 385, 90; 385, 265]
+      DstComponent  "Subtract"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Sub4"
+      SrcTerminal   3
+      Points        [1270, 755; 1270, 635; 1205, 635]
+      DstComponent  "LOW DRIVE"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Sub4"
+      SrcTerminal   2
+      Points        [825, 720; 915, 720; 915, 645; 1105, 645; 1105, 350]
+      DstComponent  "HIGH DRIVE"
+      DstTerminal   3
+    }
   }
 }
-DemoSignature "soHIPF8Q13EYQC5OOhYrBS2m7rgNxxqZeRm7zJQS5ME="
+DemoSignature "V5eHACeu0e4Q81ATBXWaYM251vhyCqgukFSDxRUKjFo="
